@@ -9,11 +9,41 @@ const GAMES_LIST = [
         path: 'games/001-2048/',
         status: 'available'
     },
-    // これからゲーム2～100を追加します
-    ...Array.from({ length: 99 }, (_, i) => ({
+    // ゲーム2～5は Coming Soon
+    ...Array.from({ length: 4 }, (_, i) => ({
         id: `${String(i + 2).padStart(3, '0')}-game`,
         number: i + 2,
         name: `Game ${i + 2}`,
+        emoji: '🎯',
+        description: 'Coming Soon',
+        path: null,
+        status: 'coming-soon'
+    })),
+    // ゲーム006: Snake
+    {
+        id: '006-snake',
+        number: 6,
+        name: 'Snake',
+        emoji: '🐍',
+        description: 'クラシックなヘビゲーム',
+        path: 'games/006-snake/',
+        status: 'available'
+    },
+    // ゲーム007: Flappy Bird
+    {
+        id: '007-flappy-bird',
+        number: 7,
+        name: 'Flappy Bird',
+        emoji: '🐦',
+        description: '有名なカジュアルゲーム',
+        path: 'games/007-flappy-bird/',
+        status: 'available'
+    },
+    // ゲーム8～100は Coming Soon
+    ...Array.from({ length: 93 }, (_, i) => ({
+        id: `${String(i + 8).padStart(3, '0')}-game`,
+        number: i + 8,
+        name: `Game ${i + 8}`,
         emoji: '🎯',
         description: 'Coming Soon',
         path: null,

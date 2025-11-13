@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake - クラシックゲーム</title>
+    <link rel="stylesheet" href="../../shared/styles/common.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <h1 class="game-title">🐍 Snake</h1>
+            <p class="game-description">矢印キーでヘビを操作。食べ物を食べてスコアアップ！</p>
+
+            <div class="score-board">
+                <div class="score-item">
+                    <span class="label">Score</span>
+                    <span class="value" id="score">0</span>
+                </div>
+                <div class="score-item">
+                    <span class="label">Best</span>
+                    <span class="value" id="best">0</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="gameBoard" class="snake-board"></div>
+
+        <div class="game-info">
+            <button id="newGameBtn" class="btn">New Game</button>
+        </div>
+
+        <div class="how-to-play">
+            <h3>遊び方</h3>
+            <ul>
+                <li>矢印キー（↑↓←→）でヘビを操作</li>
+                <li>赤い食べ物を食べてスコア獲得</li>
+                <li>ヘビが壁や自分の体に当たるとゲームオーバー</li>
+                <li>より長くなるほどハイスコア！</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="../../shared/utils/gameUtils.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
