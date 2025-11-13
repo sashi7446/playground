@@ -1,0 +1,212 @@
+/* Turn-based Battle Game Styles */
+
+.battle-area {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 20px;
+    background: linear-gradient(135deg, #1a1a3e 0%, #2d1b4e 100%);
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    min-height: 300px;
+}
+
+.player-side,
+.enemy-side {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.character-info {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid #667eea;
+    width: 100%;
+}
+
+.character-info h3 {
+    color: white;
+    margin-top: 0;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.stat {
+    color: #ccc;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.hp-bar {
+    width: 100%;
+    height: 25px;
+    background: #333;
+    border-radius: 5px;
+    overflow: hidden;
+    border: 2px solid #667eea;
+}
+
+.hp-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #00ff00, #00cc00);
+    transition: width 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.battle-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.battle-log {
+    background: rgba(0, 0, 0, 0.5);
+    color: #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    border: 2px solid #667eea;
+    height: 250px;
+    overflow-y: auto;
+    font-size: 13px;
+    line-height: 1.6;
+    font-family: 'Courier New', monospace;
+}
+
+.log-entry {
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.log-entry.damage {
+    color: #ff6b6b;
+}
+
+.log-entry.heal {
+    color: #51cf66;
+}
+
+.log-entry.info {
+    color: #74c0fc;
+}
+
+.log-entry.enemy {
+    color: #ffd43b;
+}
+
+.battle-commands {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.battle-commands .btn {
+    padding: 12px;
+    font-size: 14px;
+}
+
+.battle-commands .btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.game-info {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn-secondary {
+    background: #f0f0f0;
+    color: #667eea;
+    border: 2px solid #667eea;
+}
+
+.btn-secondary:hover {
+    background: #667eea;
+    color: white;
+}
+
+.how-to-play {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 4px solid #667eea;
+    margin-top: 20px;
+}
+
+.how-to-play h3 {
+    color: #667eea;
+    margin-bottom: 10px;
+}
+
+.how-to-play ul {
+    list-style: none;
+    font-size: 14px;
+    color: #666;
+}
+
+.how-to-play li {
+    padding: 8px 0;
+    padding-left: 25px;
+    position: relative;
+}
+
+.how-to-play li:before {
+    content: "⚔️";
+    position: absolute;
+    left: 0;
+}
+
+/* レスポンシブ */
+@media (max-width: 900px) {
+    .battle-area {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        min-height: auto;
+        padding: 20px;
+    }
+
+    .battle-log {
+        height: 150px;
+    }
+
+    .battle-commands {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .battle-area {
+        padding: 15px;
+    }
+
+    .character-info {
+        padding: 15px;
+    }
+
+    .hp-bar {
+        height: 20px;
+    }
+
+    .battle-log {
+        font-size: 12px;
+        height: 120px;
+    }
+
+    .how-to-play {
+        font-size: 12px;
+    }
+
+    .how-to-play li {
+        padding: 5px 0;
+        padding-left: 20px;
+    }
+}

@@ -9,15 +9,15 @@ const GAMES_LIST = [
         path: 'games/001-2048/',
         status: 'available'
     },
-    // ゲーム002: Solitaire (Coming Soon)
+    // ゲーム002: Solitaire
     {
         id: '002-solitaire',
         number: 2,
         name: 'Solitaire',
         emoji: '🎴',
-        description: 'Coming Soon',
-        path: null,
-        status: 'coming-soon'
+        description: 'カードゲーム - 組札に全カード移す',
+        path: 'games/002-solitaire/',
+        status: 'available'
     },
     // ゲーム003: Slide Puzzle
     {
@@ -29,16 +29,26 @@ const GAMES_LIST = [
         path: 'games/003-slide-puzzle/',
         status: 'available'
     },
-    // ゲーム004-005: Coming Soon
-    ...Array.from({ length: 2 }, (_, i) => ({
-        id: `${String(i + 4).padStart(3, '0')}-game`,
-        number: i + 4,
-        name: `Game ${i + 4}`,
+    // ゲーム004: Coming Soon
+    {
+        id: '004-sudoku',
+        number: 4,
+        name: 'Game 004',
         emoji: '🎯',
         description: 'Coming Soon',
         path: null,
         status: 'coming-soon'
-    })),
+    },
+    // ゲーム005: Shooting Game
+    {
+        id: '005-shooting-game',
+        number: 5,
+        name: 'Shooting Game',
+        emoji: '🎯',
+        description: 'シューティング - 敵を撃ち落とす',
+        path: 'games/005-shooting-game/',
+        status: 'available'
+    },
     // ゲーム006: Snake
     {
         id: '006-snake',
@@ -89,16 +99,26 @@ const GAMES_LIST = [
         path: 'games/011-card-games/',
         status: 'available'
     },
-    // ゲーム012-013: Coming Soon
-    ...Array.from({ length: 2 }, (_, i) => ({
-        id: `${String(i + 12).padStart(3, '0')}-game`,
-        number: i + 12,
-        name: `Game ${i + 12}`,
+    // ゲーム012: Coming Soon
+    {
+        id: '012-dungeon',
+        number: 12,
+        name: 'Game 012',
         emoji: '🎯',
         description: 'Coming Soon',
         path: null,
         status: 'coming-soon'
-    })),
+    },
+    // ゲーム013: Turn-based Battle
+    {
+        id: '013-turn-based-battle',
+        number: 13,
+        name: 'Turn-based Battle',
+        emoji: '⚔️',
+        description: 'RPG - ターン制バトル',
+        path: 'games/013-turn-based-battle/',
+        status: 'available'
+    },
     // ゲーム014: Block Breaker
     {
         id: '014-block-breaker',

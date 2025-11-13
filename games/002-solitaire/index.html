@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solitaire - カードゲーム</title>
+    <link rel="stylesheet" href="../../shared/styles/common.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <h1 class="game-title">🎴 Solitaire</h1>
+            <p class="game-description">すべてのカードを組み札に移す！</p>
+
+            <div class="score-board">
+                <div class="score-item">
+                    <span class="label">Moves</span>
+                    <span class="value" id="moves">0</span>
+                </div>
+                <div class="score-item">
+                    <span class="label">Best</span>
+                    <span class="value" id="best">0</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="solitaire-board">
+            <div class="tableau-section">
+                <div id="stock" class="pile stock-pile"></div>
+                <div id="waste" class="pile waste-pile"></div>
+            </div>
+            <div id="foundations" class="foundations"></div>
+        </div>
+
+        <div class="tableau-row">
+            <div id="tableau" class="tableau"></div>
+        </div>
+
+        <div class="game-info">
+            <button id="newGameBtn" class="btn">New Game</button>
+            <button id="undoBtn" class="btn btn-secondary">Undo</button>
+        </div>
+
+        <div class="how-to-play">
+            <h3>ルール</h3>
+            <ul>
+                <li>すべてのカードを4つの組み札に移す</li>
+                <li>タビローには下降順に異なるスーツで配置</li>
+                <li>空のタビロー列には、キングのみ配置可能</li>
+                <li>組み札はエースから始まる</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="../../shared/utils/gameUtils.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>

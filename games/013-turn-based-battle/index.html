@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turn-based Battle - RPG</title>
+    <link rel="stylesheet" href="../../shared/styles/common.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <h1 class="game-title">⚔️ Turn-based Battle</h1>
+            <p class="game-description">ターン制バトルでモンスターを倒そう！</p>
+
+            <div class="score-board">
+                <div class="score-item">
+                    <span class="label">Wins</span>
+                    <span class="value" id="wins">0</span>
+                </div>
+                <div class="score-item">
+                    <span class="label">Level</span>
+                    <span class="value" id="level">1</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="battle-area">
+            <div class="player-side">
+                <div class="character-info">
+                    <h3>Your Hero</h3>
+                    <div class="stat">HP: <span id="playerHp">100</span> / 100</div>
+                    <div class="hp-bar">
+                        <div id="playerHpBar" class="hp-fill" style="width: 100%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="battle-center">
+                <div id="battleLog" class="battle-log"></div>
+            </div>
+
+            <div class="enemy-side">
+                <div class="character-info">
+                    <h3 id="enemyName">Monster</h3>
+                    <div class="stat">HP: <span id="enemyHp">50</span> / 50</div>
+                    <div class="hp-bar">
+                        <div id="enemyHpBar" class="hp-fill" style="width: 100%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="battle-commands">
+            <button id="attackBtn" class="btn">Attack</button>
+            <button id="skillBtn" class="btn">Skill</button>
+            <button id="defendBtn" class="btn">Defend</button>
+            <button id="itemBtn" class="btn btn-secondary">Item</button>
+        </div>
+
+        <div class="game-info">
+            <button id="newGameBtn" class="btn" style="display: none;">Next Battle</button>
+        </div>
+
+        <div class="how-to-play">
+            <h3>ルール</h3>
+            <ul>
+                <li>Attack: 相手に通常攻撃</li>
+                <li>Skill: 大ダメージ（1ターン待機）</li>
+                <li>Defend: ダメージを軽減</li>
+                <li>Item: HPを回復</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="../../shared/utils/gameUtils.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>

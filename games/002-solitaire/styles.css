@@ -1,0 +1,217 @@
+/* Solitaire Game Styles */
+
+.solitaire-board {
+    background: linear-gradient(135deg, #2d5016 0%, #1a3a0a 100%);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.tableau-section {
+    display: flex;
+    gap: 15px;
+}
+
+.pile {
+    width: 80px;
+    height: 110px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px dashed white;
+    border-radius: 8px;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.pile:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: #667eea;
+}
+
+.foundations {
+    display: flex;
+    gap: 10px;
+}
+
+.foundation-pile {
+    width: 80px;
+    height: 110px;
+    background: rgba(100, 200, 100, 0.2);
+    border: 2px solid rgba(100, 200, 100, 0.5);
+    border-radius: 8px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(100, 200, 100, 0.5);
+    font-size: 24px;
+}
+
+.tableau-row {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.tableau {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.tableau-column {
+    position: relative;
+    width: 80px;
+    min-height: 110px;
+}
+
+.tableau-slot {
+    width: 80px;
+    height: 110px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px dashed white;
+    border-radius: 8px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    width: 70px;
+    height: 100px;
+    background: white;
+    border: 2px solid #333;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #333;
+    cursor: move;
+    position: relative;
+    transition: all 0.2s;
+    user-select: none;
+}
+
+.card.red {
+    color: #dd0000;
+}
+
+.card.black {
+    color: #000;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.card.dragging {
+    opacity: 0.7;
+    cursor: grabbing;
+}
+
+.card-suit {
+    font-size: 24px;
+}
+
+.card-rank {
+    font-size: 14px;
+}
+
+.game-info {
+    text-align: center;
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-secondary {
+    background: #f0f0f0;
+    color: #667eea;
+    border: 2px solid #667eea;
+}
+
+.btn-secondary:hover {
+    background: #667eea;
+    color: white;
+}
+
+.btn-secondary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.how-to-play {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 4px solid #667eea;
+    margin-top: 20px;
+}
+
+.how-to-play h3 {
+    color: #667eea;
+    margin-bottom: 10px;
+}
+
+.how-to-play ul {
+    list-style: none;
+    font-size: 14px;
+    color: #666;
+}
+
+.how-to-play li {
+    padding: 8px 0;
+    padding-left: 25px;
+    position: relative;
+}
+
+.how-to-play li:before {
+    content: "🎴";
+    position: absolute;
+    left: 0;
+}
+
+/* レスポンシブ */
+@media (max-width: 900px) {
+    .solitaire-board {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .tableau {
+        gap: 10px;
+    }
+
+    .card {
+        width: 60px;
+        height: 90px;
+        font-size: 12px;
+    }
+
+    .pile {
+        width: 70px;
+        height: 100px;
+    }
+
+    .foundation-pile {
+        width: 70px;
+        height: 100px;
+    }
+}
