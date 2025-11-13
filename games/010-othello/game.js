@@ -99,13 +99,13 @@ class OthelloGame {
         for (let [dr, dc] of directions) {
             let r = row + dr;
             let c = col + dc;
-            let found = false;
+            let opponentCount = 0;
 
             while (r >= 0 && r < BOARD_SIZE && c >= 0 && c < BOARD_SIZE) {
                 if (this.board[r][c] === EMPTY) break;
                 if (this.board[r][c] === opponent) {
-                    found = true;
-                } else if (found) {
+                    opponentCount++;
+                } else if (this.board[r][c] === player && opponentCount > 0) {
                     return true;
                 } else {
                     break;
@@ -142,14 +142,13 @@ class OthelloGame {
             const toFlip = [];
             let r = row + dr;
             let c = col + dc;
-            let found = false;
 
             while (r >= 0 && r < BOARD_SIZE && c >= 0 && c < BOARD_SIZE) {
                 if (this.board[r][c] === EMPTY) break;
                 if (this.board[r][c] === opponent) {
                     toFlip.push([r, c]);
-                    found = true;
-                } else if (found) {
+                } else if (this.board[r][c] === player && toFlip.length > 0) {
+                    // Found player's own piece with opponent pieces between
                     for (let [fr, fc] of toFlip) {
                         this.board[fr][fc] = player;
                     }
