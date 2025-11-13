@@ -81,16 +81,28 @@ const GAMES_LIST = [
         difficulty: 'easy',
         genre: 'casual'
     },
-    // ゲーム008-009: Coming Soon
-    ...Array.from({ length: 2 }, (_, i) => ({
-        id: `${String(i + 8).padStart(3, '0')}-game`,
-        number: i + 8,
-        name: `Game ${i + 8}`,
+    // ゲーム008: Chess
+    {
+        id: '008-chess',
+        number: 8,
+        name: 'Chess',
+        emoji: '♟️',
+        description: 'チェス - AIと対戦',
+        path: 'games/008-chess/',
+        status: 'available',
+        difficulty: 'hard',
+        genre: 'strategy'
+    },
+    // ゲーム009: Coming Soon
+    {
+        id: '009-shogi',
+        number: 9,
+        name: 'Game 009',
         emoji: '🎯',
         description: 'Coming Soon',
         path: null,
         status: 'coming-soon'
-    })),
+    },
     // ゲーム010: Othello
     {
         id: '010-othello',
@@ -174,7 +186,7 @@ const GAMES_LIST = [
         genre: 'action'
     },
     // ゲーム17～100は Coming Soon
-    ...Array.from({ length: 84 }, (_, i) => ({
+    ...Array.from({ length: 83 }, (_, i) => ({
         id: `${String(i + 17).padStart(3, '0')}-game`,
         number: i + 17,
         name: `Game ${i + 17}`,

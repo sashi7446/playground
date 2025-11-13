@@ -1,0 +1,215 @@
+.chess-controls {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.player-info,
+.difficulty-select {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+}
+
+.difficulty-select select {
+    padding: 8px 12px;
+    border: 2px solid white;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 0.95em;
+    cursor: pointer;
+}
+
+.difficulty-select select option {
+    background: #333;
+    color: white;
+}
+
+.chess-board {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 0;
+    max-width: 500px;
+    margin: 30px auto;
+    background: #333;
+    border: 3px solid #222;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    aspect-ratio: 1;
+}
+
+.chess-square {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1;
+    font-size: 2.5em;
+    cursor: pointer;
+    transition: all 0.2s;
+    user-select: none;
+    position: relative;
+}
+
+.chess-square.light {
+    background: #f0d9b5;
+}
+
+.chess-square.dark {
+    background: #b58863;
+}
+
+.chess-square:hover {
+    filter: brightness(1.1);
+}
+
+.chess-square.selected {
+    background: #baka61 !important;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.chess-square.possible::after {
+    content: '';
+    position: absolute;
+    width: 20%;
+    height: 20%;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+}
+
+.chess-piece {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    animation: popIn 0.3s ease-out;
+}
+
+.chess-piece.white {
+    color: #f0f0f0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.chess-piece.black {
+    color: #333;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.2);
+}
+
+.status-display {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 8px;
+    margin: 20px auto;
+    max-width: 500px;
+    color: white;
+    font-weight: bold;
+}
+
+.captured-pieces {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 500px;
+    margin: 20px auto;
+    color: white;
+}
+
+.captured-white,
+.captured-black {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.captured-white h4,
+.captured-black h4 {
+    margin: 0 0 10px 0;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
+.pieces-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.captured-piece {
+    display: inline-block;
+    font-size: 1.5em;
+    padding: 5px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    min-width: 30px;
+    text-align: center;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: white;
+}
+
+@keyframes popIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 600px) {
+    .chess-board {
+        max-width: 100%;
+        margin: 15px;
+    }
+
+    .chess-square {
+        font-size: 1.8em;
+    }
+
+    .captured-pieces {
+        max-width: 100%;
+        margin: 15px;
+    }
+
+    .chess-controls {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
