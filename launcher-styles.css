@@ -1,0 +1,190 @@
+.launcher-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.launcher-header {
+    text-align: center;
+    color: white;
+    margin-bottom: 50px;
+    animation: slideDown 0.6s ease-out;
+}
+
+.launcher-title {
+    font-size: 56px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+.launcher-subtitle {
+    font-size: 20px;
+    opacity: 0.9;
+}
+
+.launcher-content {
+    margin-bottom: 50px;
+}
+
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.game-card {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    animation: fadeInUp 0.5s ease-out;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 180px;
+}
+
+.game-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.game-card-number {
+    font-size: 14px;
+    color: #999;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.game-card-emoji {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.game-card-name {
+    font-size: 18px;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 10px;
+    word-break: break-word;
+}
+
+.game-card-description {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.game-card-status {
+    font-size: 11px;
+    background: #f0f0f0;
+    color: #667eea;
+    padding: 5px 10px;
+    border-radius: 10px;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.game-card-status.coming-soon {
+    background: #ffeaa7;
+    color: #d63031;
+}
+
+.game-card.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.launcher-footer {
+    text-align: center;
+    color: white;
+    padding: 30px;
+    opacity: 0.8;
+    margin-top: 50px;
+}
+
+/* アニメーション */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .launcher-title {
+        font-size: 36px;
+    }
+
+    .launcher-subtitle {
+        font-size: 16px;
+    }
+
+    .games-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .game-card-emoji {
+        font-size: 36px;
+    }
+
+    .game-card-name {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .launcher-title {
+        font-size: 28px;
+    }
+
+    .games-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .game-card {
+        min-height: 140px;
+        padding: 15px;
+    }
+
+    .game-card-emoji {
+        font-size: 28px;
+    }
+
+    .game-card-name {
+        font-size: 12px;
+    }
+
+    .game-card-description {
+        display: none;
+    }
+}
