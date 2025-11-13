@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ランキング - Game Collection</title>
+    <link rel="stylesheet" href="shared/styles/common.css">
+    <style>
+        .rankings-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .rankings-header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        .rankings-header h1 {
+            font-size: 2.5em;
+            margin: 0 0 10px 0;
+        }
+
+        .rankings-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .rankings-tabs button {
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s;
+        }
+
+        .rankings-tabs button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: white;
+        }
+
+        .rankings-tabs button.active {
+            background: white;
+            color: #667eea;
+            border-color: white;
+        }
+
+        .ranking-content {
+            display: none;
+            animation: fadeIn 0.3s;
+        }
+
+        .ranking-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .ranking-table {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .ranking-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .ranking-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .ranking-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .ranking-table tr:hover {
+            background: #f9f9f9;
+        }
+
+        .rank-badge {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .rank-badge.gold {
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            color: #333;
+        }
+
+        .rank-badge.silver {
+            background: linear-gradient(135deg, #c0c0c0 0%, #e8e8e8 100%);
+            color: #333;
+        }
+
+        .rank-badge.bronze {
+            background: linear-gradient(135deg, #cd7f32 0%, #e8a76a 100%);
+            color: white;
+        }
+
+        .rank-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .game-select {
+            padding: 10px;
+            font-size: 1em;
+            border: 2px solid #667eea;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-card h3 {
+            color: #667eea;
+            margin: 0 0 10px 0;
+            font-size: 0.9em;
+            text-transform: uppercase;
+        }
+
+        .stat-card .value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background: white;
+            color: #667eea;
+            border: 2px solid white;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .empty-message {
+            text-align: center;
+            padding: 40px;
+            color: white;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="rankings-container">
+        <a href="launcher.html" class="back-button">← ランチャーに戻る</a>
+
+        <div class="rankings-header">
+            <h1>🏆 Game Rankings</h1>
+            <p>ゲーム別ランキングとプレイ統計</p>
+        </div>
+
+        <div class="rankings-tabs">
+            <button class="active" onclick="switchTab('global')">グローバルランキング</button>
+            <button onclick="switchTab('game')">ゲーム別ランキング</button>
+            <button onclick="switchTab('stats')">プレイ統計</button>
+        </div>
+
+        <!-- グローバルランキング -->
+        <div id="global" class="ranking-content active">
+            <div class="ranking-table" id="globalRankingTable">
+                <p class="empty-message">ランキングデータがまだありません。ゲームをプレイしてください！</p>
+            </div>
+        </div>
+
+        <!-- ゲーム別ランキング -->
+        <div id="game" class="ranking-content">
+            <select id="gameSelect" class="game-select" onchange="updateGameRanking()">
+                <option value="">ゲームを選択...</option>
+            </select>
+            <div class="ranking-table" id="gameRankingTable">
+                <p class="empty-message">ゲームを選択してください。</p>
+            </div>
+        </div>
+
+        <!-- プレイ統計 -->
+        <div id="stats" class="ranking-content">
+            <select id="gameSelectStats" class="game-select" onchange="updateGameStats()">
+                <option value="">ゲームを選択...</option>
+            </select>
+            <div id="statsContainer">
+                <p class="empty-message">ゲームを選択してください。</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="shared/utils/gameUtils.js"></script>
+    <script src="launcher.js"></script>
+    <script>
+        // ゲームIDとゲーム情報のマップを作成
+        let gameMap = {};
+
+        function initializeGameMap() {
+            // launcher.js の GAMES_LIST を使用
+            if (typeof GAMES_LIST !== 'undefined') {
+                GAMES_LIST.forEach(game => {
+                    if (game.status === 'available') {
+                        gameMap[game.id] = game.name;
+                    }
+                });
+            }
+        }
+
+        // タブ切り替え
+        function switchTab(tabName) {
+            // 所有タブを非表示に
+            document.querySelectorAll('.ranking-content').forEach(el => {
+                el.classList.remove('active');
+            });
+
+            // ボタンを非アクティブに
+            document.querySelectorAll('.rankings-tabs button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // 選択したタブを表示
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+
+            // 初回表示時の初期化
+            if (tabName === 'global') {
+                renderGlobalRanking();
+            } else if (tabName === 'game') {
+                populateGameSelect();
+            } else if (tabName === 'stats') {
+                populateGameSelectStats();
+            }
+        }
+
+        // グローバルランキングを表示
+        function renderGlobalRanking() {
+            const ranking = GameStorage.getGlobalRanking(100);
+
+            if (ranking.length === 0) {
+                document.getElementById('globalRankingTable').innerHTML =
+                    '<p class="empty-message">ランキングデータがまだありません。ゲームをプレイしてください！</p>';
+                return;
+            }
+
+            let html = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>順位</th>
+                            <th>ゲーム</th>
+                            <th>スコア</th>
+                            <th>結果</th>
+                            <th>日時</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            ranking.forEach((item, index) => {
+                const gameName = gameMap[item.gameId] || item.gameId;
+                const date = new Date(item.timestamp).toLocaleString('ja-JP');
+                let badgeClass = '';
+
+                if (index === 0) badgeClass = 'gold';
+                else if (index === 1) badgeClass = 'silver';
+                else if (index === 2) badgeClass = 'bronze';
+
+                html += `
+                    <tr>
+                        <td><span class="rank-badge ${badgeClass}">${index + 1}</span></td>
+                        <td>${gameName}</td>
+                        <td><strong>${item.score}</strong></td>
+                        <td>${item.result}</td>
+                        <td>${date}</td>
+                    </tr>
+                `;
+            });
+
+            html += `
+                    </tbody>
+                </table>
+            `;
+
+            document.getElementById('globalRankingTable').innerHTML = html;
+        }
+
+        // ゲームセレクトを整める
+        function populateGameSelect() {
+            const select = document.getElementById('gameSelect');
+            select.innerHTML = '<option value="">ゲームを選択...</option>';
+
+            Object.entries(gameMap).forEach(([id, name]) => {
+                const option = document.createElement('option');
+                option.value = id;
+                option.textContent = name;
+                select.appendChild(option);
+            });
+        }
+
+        // ゲーム別ランキングを表示
+        function updateGameRanking() {
+            const gameId = document.getElementById('gameSelect').value;
+
+            if (!gameId) {
+                document.getElementById('gameRankingTable').innerHTML =
+                    '<p class="empty-message">ゲームを選択してください。</p>';
+                return;
+            }
+
+            const ranking = GameStorage.getGameRanking(gameId, 50);
+
+            if (ranking.length === 0) {
+                document.getElementById('gameRankingTable').innerHTML =
+                    '<p class="empty-message">このゲームのランキングデータがまだありません。</p>';
+                return;
+            }
+
+            let html = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>順位</th>
+                            <th>スコア</th>
+                            <th>結果</th>
+                            <th>プレイ時間</th>
+                            <th>日時</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            ranking.forEach((item, index) => {
+                const date = new Date(item.timestamp).toLocaleString('ja-JP');
+                const duration = Math.floor(item.duration / 60) + '分' + (item.duration % 60) + '秒';
+                let badgeClass = '';
+
+                if (index === 0) badgeClass = 'gold';
+                else if (index === 1) badgeClass = 'silver';
+                else if (index === 2) badgeClass = 'bronze';
+
+                html += `
+                    <tr>
+                        <td><span class="rank-badge ${badgeClass}">${index + 1}</span></td>
+                        <td><strong>${item.score}</strong></td>
+                        <td>${item.result}</td>
+                        <td>${duration}</td>
+                        <td>${date}</td>
+                    </tr>
+                `;
+            });
+
+            html += `
+                    </tbody>
+                </table>
+            `;
+
+            document.getElementById('gameRankingTable').innerHTML = html;
+        }
+
+        // ゲームセレクト（統計用）を整える
+        function populateGameSelectStats() {
+            const select = document.getElementById('gameSelectStats');
+            select.innerHTML = '<option value="">ゲームを選択...</option>';
+
+            Object.entries(gameMap).forEach(([id, name]) => {
+                const option = document.createElement('option');
+                option.value = id;
+                option.textContent = name;
+                select.appendChild(option);
+            });
+        }
+
+        // ゲーム統計を表示
+        function updateGameStats() {
+            const gameId = document.getElementById('gameSelectStats').value;
+
+            if (!gameId) {
+                document.getElementById('statsContainer').innerHTML =
+                    '<p class="empty-message">ゲームを選択してください。</p>';
+                return;
+            }
+
+            const stats = GameStorage.getGameStats(gameId);
+
+            if (stats.playCount === 0) {
+                document.getElementById('statsContainer').innerHTML =
+                    '<p class="empty-message">このゲームのプレイ統計がありません。</p>';
+                return;
+            }
+
+            const totalHours = Math.floor(stats.totalPlayTime / 3600);
+            const totalMinutes = Math.floor((stats.totalPlayTime % 3600) / 60);
+
+            let html = `
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>プレイ回数</h3>
+                        <div class="value">${stats.playCount}</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>勝利数</h3>
+                        <div class="value">${stats.winCount}</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>勝率</h3>
+                        <div class="value">${stats.winRate}%</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>ベストスコア</h3>
+                        <div class="value">${stats.bestScore}</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>総プレイ時間</h3>
+                        <div class="value">${totalHours}h ${totalMinutes}m</div>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('statsContainer').innerHTML = html;
+        }
+
+        // ページ初期化
+        window.addEventListener('DOMContentLoaded', () => {
+            initializeGameMap();
+        });
+    </script>
+</body>
+</html>

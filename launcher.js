@@ -7,7 +7,9 @@ const GAMES_LIST = [
         emoji: '🎮',
         description: 'タイルを合わせて2048を目指そう',
         path: 'games/001-2048/',
-        status: 'available'
+        status: 'available',
+        difficulty: 'normal',
+        genre: 'puzzle'
     },
     // ゲーム002: Solitaire
     {
@@ -17,7 +19,9 @@ const GAMES_LIST = [
         emoji: '🎴',
         description: 'カードゲーム - 組札に全カード移す',
         path: 'games/002-solitaire/',
-        status: 'available'
+        status: 'available',
+        difficulty: 'hard',
+        genre: 'puzzle'
     },
     // ゲーム003: Slide Puzzle
     {
@@ -27,7 +31,9 @@ const GAMES_LIST = [
         emoji: '🧩',
         description: 'ピースをスライドさせてパズル完成',
         path: 'games/003-slide-puzzle/',
-        status: 'available'
+        status: 'available',
+        difficulty: 'easy',
+        genre: 'puzzle'
     },
     // ゲーム004: Coming Soon
     {
@@ -47,7 +53,9 @@ const GAMES_LIST = [
         emoji: '🎯',
         description: 'シューティング - 敵を撃ち落とす',
         path: 'games/005-shooting-game/',
-        status: 'available'
+        status: 'available',
+        difficulty: 'normal',
+        genre: 'action'
     },
     // ゲーム006: Snake
     {
@@ -57,7 +65,9 @@ const GAMES_LIST = [
         emoji: '🐍',
         description: 'クラシックなヘビゲーム',
         path: 'games/006-snake/',
-        status: 'available'
+        status: 'available',
+        difficulty: 'easy',
+        genre: 'action'
     },
     // ゲーム007: Flappy Bird
     {
@@ -67,7 +77,9 @@ const GAMES_LIST = [
         emoji: '🐦',
         description: '有名なカジュアルゲーム',
         path: 'games/007-flappy-bird/',
-        status: 'available'
+        status: 'available',
+        difficulty: 'easy',
+        genre: 'casual'
     },
     // ゲーム008-009: Coming Soon
     ...Array.from({ length: 2 }, (_, i) => ({
@@ -87,7 +99,9 @@ const GAMES_LIST = [
         emoji: '⚫',
         description: '戦略ボードゲーム - AIと対戦',
         path: 'games/010-othello/',
-        status: 'available'
+        status: 'available',
+        difficulty: 'hard',
+        genre: 'strategy'
     },
     // ゲーム011: Card Games
     {
@@ -97,7 +111,9 @@ const GAMES_LIST = [
         emoji: '♠️',
         description: 'カードゲーム - 21に近づけろ！',
         path: 'games/011-card-games/',
-        status: 'available'
+        status: 'available',
+        difficulty: 'normal',
+        genre: 'casual'
     },
     // ゲーム012: Coming Soon
     {
@@ -117,7 +133,9 @@ const GAMES_LIST = [
         emoji: '⚔️',
         description: 'RPG - ターン制バトル',
         path: 'games/013-turn-based-battle/',
-        status: 'available'
+        status: 'available',
+        difficulty: 'normal',
+        genre: 'rpg'
     },
     // ゲーム014: Block Breaker
     {
@@ -127,7 +145,9 @@ const GAMES_LIST = [
         emoji: '🧱',
         description: 'ブロック崩し - ブロックを全破壊',
         path: 'games/014-block-breaker/',
-        status: 'available'
+        status: 'available',
+        difficulty: 'easy',
+        genre: 'casual'
     },
     // ゲーム015: Matching Game
     {
@@ -137,7 +157,9 @@ const GAMES_LIST = [
         emoji: '🎴',
         description: 'ペアを見つけよう！',
         path: 'games/015-matching-game/',
-        status: 'available'
+        status: 'available',
+        difficulty: 'easy',
+        genre: 'casual'
     },
     // ゲーム016: Bubble Shooter
     {
@@ -147,7 +169,9 @@ const GAMES_LIST = [
         emoji: '🫧',
         description: 'バブルを撃って消す',
         path: 'games/016-bubble-shooter/',
-        status: 'available'
+        status: 'available',
+        difficulty: 'normal',
+        genre: 'action'
     },
     // ゲーム17～100は Coming Soon
     ...Array.from({ length: 84 }, (_, i) => ({

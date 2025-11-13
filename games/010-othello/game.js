@@ -148,6 +148,7 @@ class OthelloGame {
                 if (this.board[r][c] === EMPTY) break;
                 if (this.board[r][c] === opponent) {
                     toFlip.push([r, c]);
+                    found = true;
                 } else if (found) {
                     for (let [fr, fc] of toFlip) {
                         this.board[fr][fc] = player;

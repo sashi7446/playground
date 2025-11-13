@@ -49,6 +49,92 @@ const GameStorage = {
     clearGameData: (gameId) => {
         localStorage.removeItem(`game_${gameId}_score`);
         localStorage.removeItem(`game_${gameId}_best`);
+    },
+
+    /**
+     * ランキング用のプレイ記録を保存
+     * @param {string} gameId - ゲームID
+     * @param {number} score - スコア
+     * @param {string} result - 結果 ('won', 'lost', 'completed', 'score', etc)
+     * @param {number} duration - プレイ時間（秒）
+     */
+    recordPlay: (gameId, score, result, duration = 0) => {
+        const key = 'ranking_all_plays';
+        let plays = JSON.parse(localStorage.getItem(key)) || [];
+
+        plays.push({
+            gameId: gameId,
+            score: score,
+            result: result,
+            duration: duration,
+            timestamp: Date.now()
+        });
+
+        // 最新1000レコードのみ保存（メモリ節約）
+        if (plays.length > 1000) {
+            plays = plays.slice(-1000);
+        }
+
+        localStorage.setItem(key, JSON.stringify(plays));
+    },
+
+    /**
+     * グローバルランキングを取得（全ゲーム、スコア順）
+     * @param {number} limit - 取得件数
+     * @returns {array} ランキング配列
+     */
+    getGlobalRanking: (limit = 100) => {
+        const key = 'ranking_all_plays';
+        const plays = JSON.parse(localStorage.getItem(key)) || [];
+
+        // スコア順（降順）でソート
+        return plays
+            .filter(p => p.score > 0)
+            .sort((a, b) => b.score - a.score)
+            .slice(0, limit);
+    },
+
+    /**
+     * ゲーム別ランキングを取得
+     * @param {string} gameId - ゲームID
+     * @param {number} limit - 取得件数
+     * @returns {array} ランキング配列
+     */
+    getGameRanking: (gameId, limit = 50) => {
+        const key = 'ranking_all_plays';
+        const plays = JSON.parse(localStorage.getItem(key)) || [];
+
+        return plays
+            .filter(p => p.gameId === gameId && p.score > 0)
+            .sort((a, b) => b.score - a.score)
+            .slice(0, limit);
+    },
+
+    /**
+     * ゲームのプレイ統計を取得
+     * @param {string} gameId - ゲームID
+     * @returns {object} 統計情報
+     */
+    getGameStats: (gameId) => {
+        const key = 'ranking_all_plays';
+        const plays = JSON.parse(localStorage.getItem(key)) || [];
+        const gamePlays = plays.filter(p => p.gameId === gameId);
+
+        if (gamePlays.length === 0) {
+            return { playCount: 0, winCount: 0, bestScore: 0, totalPlayTime: 0 };
+        }
+
+        const winCount = gamePlays.filter(p => p.result === 'won').length;
+        const bestScore = Math.max(...gamePlays.map(p => p.score || 0));
+        const totalPlayTime = gamePlays.reduce((sum, p) => sum + (p.duration || 0), 0);
+
+        return {
+            playCount: gamePlays.length,
+            winCount: winCount,
+            bestScore: bestScore,
+            totalPlayTime: totalPlayTime,
+            winRate: ((winCount / gamePlays.length) * 100).toFixed(1)
+        };
     }
 };
 
