@@ -2,6 +2,24 @@
 
 100個のゲームを作成するプロジェクトです。楽しくて面白いゲームをどんどん追加していきます！
 
+---
+
+## 🎮 ゲームをプレイ
+
+### 📱 オンラインプレイ（GitHub Pages）
+👉 **[Game Collection をプレイする](https://sashi7446.github.io/playground/launcher.html)**
+
+### 💻 ローカルプレイ
+```bash
+# ローカルサーバーで実行
+python3 -m http.server 8000
+
+# launcher.htmlを開く
+open http://localhost:8000/launcher.html
+```
+
+---
+
 ## プロジェクト構成（ハイブリッド型）
 
 ```
