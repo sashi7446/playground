@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Othello - 戦略ボードゲーム</title>
+    <link rel="stylesheet" href="../../shared/styles/common.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <h1 class="game-title">⚫ Othello</h1>
+            <p class="game-description">黒と白をひっくり返して勝利を掴もう！</p>
+
+            <div class="score-board">
+                <div class="score-item">
+                    <span class="label">Black</span>
+                    <span class="value" id="blackScore">2</span>
+                </div>
+                <div class="score-item">
+                    <span class="label">White</span>
+                    <span class="value" id="whiteScore">2</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="game-controls">
+            <div class="difficulty-select">
+                <label for="difficulty">難易度:</label>
+                <select id="difficulty">
+                    <option value="easy">簡単</option>
+                    <option value="normal" selected>普通</option>
+                    <option value="hard">難しい</option>
+                </select>
+            </div>
+            <div class="player-select">
+                <label for="playerColor">プレイ:</label>
+                <select id="playerColor">
+                    <option value="black" selected>黒（先手）</option>
+                    <option value="white">白（後手）</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="gameBoard" class="othello-board"></div>
+
+        <div class="game-status">
+            <div id="status" class="status-text">ゲーム準備中...</div>
+        </div>
+
+        <div class="game-info">
+            <button id="newGameBtn" class="btn">新しいゲーム</button>
+            <button id="undoBtn" class="btn btn-secondary">戻す</button>
+        </div>
+
+        <div class="how-to-play">
+            <h3>ルール</h3>
+            <ul>
+                <li>黒が先手、白が後手</li>
+                <li>相手の石を自分の石で挟むと、挟まれた石がすべてひっくり返る</li>
+                <li>ひっくり返せる石がない場合はパスします</li>
+                <li>両者ともパスしたらゲーム終了</li>
+                <li>多く石を取った方が勝ちです</li>
+            </ul>
+        </div>
+
+        <div class="game-stats">
+            <h3>統計</h3>
+            <div id="stats" class="stats-content">
+                勝利: <span id="wins">0</span> | 敗北: <span id="losses">0</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../shared/utils/gameUtils.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>

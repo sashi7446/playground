@@ -59,8 +59,8 @@ const GAMES_LIST = [
         path: 'games/007-flappy-bird/',
         status: 'available'
     },
-    // ゲーム008-010: Coming Soon
-    ...Array.from({ length: 3 }, (_, i) => ({
+    // ゲーム008-009: Coming Soon
+    ...Array.from({ length: 2 }, (_, i) => ({
         id: `${String(i + 8).padStart(3, '0')}-game`,
         number: i + 8,
         name: `Game ${i + 8}`,
@@ -69,6 +69,16 @@ const GAMES_LIST = [
         path: null,
         status: 'coming-soon'
     })),
+    // ゲーム010: Othello
+    {
+        id: '010-othello',
+        number: 10,
+        name: 'Othello',
+        emoji: '⚫',
+        description: '戦略ボードゲーム - AIと対戦',
+        path: 'games/010-othello/',
+        status: 'available'
+    },
     // ゲーム011: Card Games
     {
         id: '011-card-games',
