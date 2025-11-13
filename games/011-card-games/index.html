@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Jack - カードゲーム</title>
+    <link rel="stylesheet" href="../../shared/styles/common.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <h1 class="game-title">♠️ Black Jack</h1>
+            <p class="game-description">21に近づけてディーラーに勝とう！</p>
+
+            <div class="score-board">
+                <div class="score-item">
+                    <span class="label">Wins</span>
+                    <span class="value" id="score">0</span>
+                </div>
+                <div class="score-item">
+                    <span class="label">Money</span>
+                    <span class="value" id="best">$100</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="game-area">
+            <div class="dealer-area">
+                <h3>Dealer</h3>
+                <div id="dealerCards" class="cards-display"></div>
+                <div id="dealerScore" class="score-display"></div>
+            </div>
+
+            <div class="player-area">
+                <h3>You</h3>
+                <div id="playerCards" class="cards-display"></div>
+                <div id="playerScore" class="score-display"></div>
+            </div>
+        </div>
+
+        <div class="game-info">
+            <button id="hitBtn" class="btn">Hit</button>
+            <button id="standBtn" class="btn">Stand</button>
+            <button id="newGameBtn" class="btn btn-secondary">New Game</button>
+        </div>
+
+        <div id="result" class="result-message"></div>
+
+        <div class="how-to-play">
+            <h3>遊び方</h3>
+            <ul>
+                <li>カードの合計を21に近づける</li>
+                <li>Hitで新しいカードをもらう</li>
+                <li>Standで手を確定</li>
+                <li>21を超えるとバスト（負け）</li>
+                <li>ディーラーより21に近いと勝ち！</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="../../shared/utils/gameUtils.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>

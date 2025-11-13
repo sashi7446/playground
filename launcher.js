@@ -9,11 +9,31 @@ const GAMES_LIST = [
         path: 'games/001-2048/',
         status: 'available'
     },
-    // ゲーム2～5は Coming Soon
-    ...Array.from({ length: 4 }, (_, i) => ({
-        id: `${String(i + 2).padStart(3, '0')}-game`,
-        number: i + 2,
-        name: `Game ${i + 2}`,
+    // ゲーム002: Solitaire (Coming Soon)
+    {
+        id: '002-solitaire',
+        number: 2,
+        name: 'Solitaire',
+        emoji: '🎴',
+        description: 'Coming Soon',
+        path: null,
+        status: 'coming-soon'
+    },
+    // ゲーム003: Slide Puzzle
+    {
+        id: '003-slide-puzzle',
+        number: 3,
+        name: 'Slide Puzzle',
+        emoji: '🧩',
+        description: 'ピースをスライドさせてパズル完成',
+        path: 'games/003-slide-puzzle/',
+        status: 'available'
+    },
+    // ゲーム004-005: Coming Soon
+    ...Array.from({ length: 2 }, (_, i) => ({
+        id: `${String(i + 4).padStart(3, '0')}-game`,
+        number: i + 4,
+        name: `Game ${i + 4}`,
         emoji: '🎯',
         description: 'Coming Soon',
         path: null,
@@ -39,11 +59,71 @@ const GAMES_LIST = [
         path: 'games/007-flappy-bird/',
         status: 'available'
     },
-    // ゲーム8～100は Coming Soon
-    ...Array.from({ length: 93 }, (_, i) => ({
+    // ゲーム008-010: Coming Soon
+    ...Array.from({ length: 3 }, (_, i) => ({
         id: `${String(i + 8).padStart(3, '0')}-game`,
         number: i + 8,
         name: `Game ${i + 8}`,
+        emoji: '🎯',
+        description: 'Coming Soon',
+        path: null,
+        status: 'coming-soon'
+    })),
+    // ゲーム011: Card Games
+    {
+        id: '011-card-games',
+        number: 11,
+        name: 'Black Jack',
+        emoji: '♠️',
+        description: 'カードゲーム - 21に近づけろ！',
+        path: 'games/011-card-games/',
+        status: 'available'
+    },
+    // ゲーム012-013: Coming Soon
+    ...Array.from({ length: 2 }, (_, i) => ({
+        id: `${String(i + 12).padStart(3, '0')}-game`,
+        number: i + 12,
+        name: `Game ${i + 12}`,
+        emoji: '🎯',
+        description: 'Coming Soon',
+        path: null,
+        status: 'coming-soon'
+    })),
+    // ゲーム014: Block Breaker
+    {
+        id: '014-block-breaker',
+        number: 14,
+        name: 'Block Breaker',
+        emoji: '🧱',
+        description: 'ブロック崩し - ブロックを全破壊',
+        path: 'games/014-block-breaker/',
+        status: 'available'
+    },
+    // ゲーム015: Matching Game
+    {
+        id: '015-matching-game',
+        number: 15,
+        name: 'Matching Game',
+        emoji: '🎴',
+        description: 'ペアを見つけよう！',
+        path: 'games/015-matching-game/',
+        status: 'available'
+    },
+    // ゲーム016: Bubble Shooter
+    {
+        id: '016-bubble-shooter',
+        number: 16,
+        name: 'Bubble Shooter',
+        emoji: '🫧',
+        description: 'バブルを撃って消す',
+        path: 'games/016-bubble-shooter/',
+        status: 'available'
+    },
+    // ゲーム17～100は Coming Soon
+    ...Array.from({ length: 84 }, (_, i) => ({
+        id: `${String(i + 17).padStart(3, '0')}-game`,
+        number: i + 17,
+        name: `Game ${i + 17}`,
         emoji: '🎯',
         description: 'Coming Soon',
         path: null,

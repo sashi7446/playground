@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide Puzzle - パズル</title>
+    <link rel="stylesheet" href="../../shared/styles/common.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <h1 class="game-title">🧩 Slide Puzzle</h1>
+            <p class="game-description">ピースをスライドさせて数字を順番に並べよう！</p>
+
+            <div class="score-board">
+                <div class="score-item">
+                    <span class="label">Moves</span>
+                    <span class="value" id="moves">0</span>
+                </div>
+                <div class="score-item">
+                    <span class="label">Best</span>
+                    <span class="value" id="best">0</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="gameBoard" class="slide-puzzle-board"></div>
+
+        <div class="game-info">
+            <button id="newGameBtn" class="btn">New Game</button>
+            <button id="solveBtn" class="btn btn-secondary" style="margin-left: 10px;">Hint</button>
+        </div>
+
+        <div class="how-to-play">
+            <h3>遊び方</h3>
+            <ul>
+                <li>空いているマスの隣のピースをクリック</li>
+                <li>ピースをスライドさせて移動</li>
+                <li>数字を1から順に上から左へ並べる</li>
+                <li>右下の空きマスで完成！</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="../../shared/utils/gameUtils.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>

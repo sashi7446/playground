@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matching Game - パズル</title>
+    <link rel="stylesheet" href="../../shared/styles/common.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <h1 class="game-title">🎴 Matching Game</h1>
+            <p class="game-description">ペアを見つけてカードを配置しよう！</p>
+
+            <div class="score-board">
+                <div class="score-item">
+                    <span class="label">Matches</span>
+                    <span class="value" id="score">0</span>
+                </div>
+                <div class="score-item">
+                    <span class="label">Moves</span>
+                    <span class="value" id="moves">0</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="gameBoard" class="matching-board"></div>
+
+        <div class="game-info">
+            <button id="newGameBtn" class="btn">New Game</button>
+        </div>
+
+        <div class="how-to-play">
+            <h3>遊び方</h3>
+            <ul>
+                <li>カードをクリックして表す</li>
+                <li>同じ絵が2つ出たらペア成功</li>
+                <li>すべてのペアを見つけよう</li>
+                <li>少ない手数でクリアを目指す！</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="../../shared/utils/gameUtils.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>

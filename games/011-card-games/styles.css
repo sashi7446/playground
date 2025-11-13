@@ -1,0 +1,158 @@
+/* Black Jack Game Styles */
+
+.game-area {
+    background: linear-gradient(135deg, #2d5016 0%, #1a3a0a 100%);
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.dealer-area,
+.player-area {
+    margin-bottom: 30px;
+    color: white;
+}
+
+.dealer-area h3,
+.player-area h3 {
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: #ffd700;
+}
+
+.cards-display {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 60px;
+    height: 80px;
+    background: white;
+    border: 2px solid #333;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #333;
+    font-size: 12px;
+}
+
+.card.hidden {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-color: #444;
+}
+
+.score-display {
+    font-size: 16px;
+    color: #ffd700;
+    font-weight: bold;
+}
+
+.result-message {
+    text-align: center;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    min-height: 30px;
+}
+
+.result-message.win {
+    background: #d4edda;
+    color: #155724;
+    border: 2px solid #28a745;
+}
+
+.result-message.lose {
+    background: #f8d7da;
+    color: #721c24;
+    border: 2px solid #f5c6cb;
+}
+
+.result-message.draw {
+    background: #fff3cd;
+    color: #856404;
+    border: 2px solid #ffeaa7;
+}
+
+.game-info {
+    text-align: center;
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn {
+    min-width: 100px;
+}
+
+.how-to-play {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 4px solid #667eea;
+    margin-top: 20px;
+}
+
+.how-to-play h3 {
+    color: #667eea;
+    margin-bottom: 10px;
+}
+
+.how-to-play ul {
+    list-style: none;
+    font-size: 14px;
+    color: #666;
+}
+
+.how-to-play li {
+    padding: 8px 0;
+    padding-left: 25px;
+    position: relative;
+}
+
+.how-to-play li:before {
+    content: "♠️";
+    position: absolute;
+    left: 0;
+}
+
+/* レスポンシブ */
+@media (max-width: 600px) {
+    .game-area {
+        padding: 15px;
+    }
+
+    .card {
+        width: 50px;
+        height: 65px;
+        font-size: 10px;
+    }
+
+    .game-info {
+        gap: 5px;
+    }
+
+    .btn {
+        min-width: 70px;
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+
+    .how-to-play {
+        font-size: 12px;
+    }
+
+    .how-to-play li {
+        padding: 5px 0;
+        padding-left: 20px;
+    }
+}

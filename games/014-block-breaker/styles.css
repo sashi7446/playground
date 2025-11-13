@@ -1,0 +1,65 @@
+/* Block Breaker Game Styles */
+
+#gameCanvas {
+    display: block;
+    margin: 20px auto;
+    background: #1a1a2e;
+    border: 3px solid #667eea;
+    border-radius: 10px;
+    cursor: none;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+}
+
+.game-info {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.how-to-play {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 4px solid #667eea;
+    margin-top: 20px;
+}
+
+.how-to-play h3 {
+    color: #667eea;
+    margin-bottom: 10px;
+}
+
+.how-to-play ul {
+    list-style: none;
+    font-size: 14px;
+    color: #666;
+}
+
+.how-to-play li {
+    padding: 8px 0;
+    padding-left: 25px;
+    position: relative;
+}
+
+.how-to-play li:before {
+    content: "🧱";
+    position: absolute;
+    left: 0;
+}
+
+/* レスポンシブ */
+@media (max-width: 600px) {
+    #gameCanvas {
+        max-width: 100%;
+    }
+
+    .how-to-play {
+        font-size: 12px;
+    }
+
+    .how-to-play li {
+        padding: 5px 0;
+        padding-left: 20px;
+    }
+}

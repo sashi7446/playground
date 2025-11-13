@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubble Shooter - シューティング</title>
+    <link rel="stylesheet" href="../../shared/styles/common.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <h1 class="game-title">🫧 Bubble Shooter</h1>
+            <p class="game-description">同じ色のバブルを3つ以上つなげて消そう！</p>
+
+            <div class="score-board">
+                <div class="score-item">
+                    <span class="label">Score</span>
+                    <span class="value" id="score">0</span>
+                </div>
+                <div class="score-item">
+                    <span class="label">Best</span>
+                    <span class="value" id="best">0</span>
+                </div>
+            </div>
+        </div>
+
+        <canvas id="gameCanvas" width="400" height="600"></canvas>
+
+        <div class="game-info">
+            <button id="newGameBtn" class="btn">New Game</button>
+        </div>
+
+        <div class="how-to-play">
+            <h3>遊び方</h3>
+            <ul>
+                <li>マウスを動かして射撃角度を決める</li>
+                <li>クリックしてバブルを撃つ</li>
+                <li>同じ色のバブルが3つ以上つながると消える</li>
+                <li>すべてのバブルを消そう！</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="../../shared/utils/gameUtils.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
