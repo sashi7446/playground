@@ -172,20 +172,19 @@ class PongVolley {
         this.ball.x += this.ball.vx * this.ball.speed;
         this.ball.y += this.ball.vy * this.ball.speed;
 
-        // Top and bottom wall bouncing
-        if (this.ball.y - this.ball.size / 2 < 0) {
-            this.ball.y = this.ball.size / 2;
-            this.ball.vy = Math.abs(this.ball.vy);
-        }
-        if (this.ball.y + this.ball.size / 2 > CANVAS_HEIGHT) {
-            this.ball.y = CANVAS_HEIGHT - this.ball.size / 2;
-            this.ball.vy = -Math.abs(this.ball.vy);
-        }
-
-        // Side wall collision - Calculate score based on in-zone passage
+        // Wall collision - Calculate score based on in-zone passage
+        // Side walls (X axis) - out of bounds
         if (this.ball.x - this.ball.size / 2 < 0 || this.ball.x + this.ball.size / 2 > CANVAS_WIDTH) {
             this.scorePoint();
             this.resetBall();
+            return;  // Stop processing to avoid multiple score calculations
+        }
+
+        // Back walls (Y axis) - also out of bounds (tennis baseline)
+        if (this.ball.y - this.ball.size / 2 < 0 || this.ball.y + this.ball.size / 2 > CANVAS_HEIGHT) {
+            this.scorePoint();
+            this.resetBall();
+            return;  // Stop processing to avoid multiple score calculations
         }
     }
 
