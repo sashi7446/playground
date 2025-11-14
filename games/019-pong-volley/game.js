@@ -67,8 +67,8 @@ class PongVolley {
             y: NET_Y,
             prevX: CANVAS_WIDTH / 2,
             prevY: NET_Y,
-            vx: (Math.random() > 0.5 ? 1 : -1) * 4,
-            vy: (Math.random() > 0.5 ? 1 : -1) * 4,
+            vx: -3,  // Start going left
+            vy: 4,   // Going towards player (downward)
             speed: 1,
             size: BALL_SIZE,
             lastHitBy: 'ai'  // Track who hit it last
@@ -284,10 +284,15 @@ class PongVolley {
         this.ball.y = NET_Y;
         this.ball.prevX = CANVAS_WIDTH / 2;
         this.ball.prevY = NET_Y;
-        this.ball.vx = (Math.random() > 0.5 ? 1 : -1) * 4;
-        this.ball.vy = (Math.random() > 0.5 ? 1 : -1) * 4;
+
+        // Consistent serve-like reset: always towards player
+        // Direction alternates based on total points
+        const totalPoints = this.scores.player + this.scores.ai;
+        this.ball.vx = (totalPoints % 2 === 0) ? -3 : 3;  // Alternate left/right
+        this.ball.vy = 4;   // Always towards player (downward)
+
         this.ball.speed = 1;
-        this.ball.lastHitBy = Math.random() > 0.5 ? 'player' : 'ai';
+        this.ball.lastHitBy = 'ai';  // Start as if AI just served
         this.ballPassedThroughInZone = false;
     }
 
