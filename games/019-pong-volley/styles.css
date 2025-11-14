@@ -1,0 +1,160 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.game-container {
+    background: rgba(0, 0, 0, 0.8);
+    border: 3px solid #00ff00;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+    max-width: 900px;
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.game-header h1 {
+    color: #00ff00;
+    font-size: 2.5em;
+    text-shadow: 0 0 10px #00ff00;
+    flex: 1;
+    min-width: 200px;
+}
+
+.difficulty-selector {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    color: #00ff00;
+}
+
+.difficulty-selector label {
+    font-weight: bold;
+}
+
+.difficulty-selector select {
+    padding: 8px 12px;
+    background: #000;
+    color: #00ff00;
+    border: 2px solid #00ff00;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.difficulty-selector select:hover {
+    background: #111;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+.game-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.score-display {
+    display: flex;
+    gap: 40px;
+    color: #fff;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.score-display span {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#playerScore {
+    color: #00ff00;
+    font-size: 1.5em;
+}
+
+#aiScore {
+    color: #ff0000;
+    font-size: 1.5em;
+}
+
+.game-status {
+    color: #ffff00;
+    font-weight: bold;
+    font-size: 1.1em;
+    text-shadow: 0 0 5px #ffff00;
+}
+
+#gameCanvas {
+    display: block;
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    background: #000;
+    border: 2px solid #00ff00;
+    margin: 0 auto 20px;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+.controls {
+    text-align: center;
+    color: #00ff00;
+    font-size: 0.9em;
+    line-height: 1.6;
+}
+
+.controls p {
+    margin: 8px 0;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .game-header {
+        flex-direction: column;
+    }
+
+    .game-header h1 {
+        font-size: 1.8em;
+    }
+
+    .difficulty-selector {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .game-info {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .score-display {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .controls {
+        font-size: 0.8em;
+    }
+}

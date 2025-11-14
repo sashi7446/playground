@@ -215,11 +215,23 @@ const GAMES_LIST = [
         difficulty: 'normal',
         genre: 'action'
     },
-    // ゲーム19～100は Coming Soon
-    ...Array.from({ length: 79 }, (_, i) => ({
-        id: `${String(i + 19).padStart(3, '0')}-game`,
-        number: i + 19,
-        name: `Game ${i + 19}`,
+    // ゲーム019: Pong Volley
+    {
+        id: '019-pong-volley',
+        number: 19,
+        name: 'Pong Volley',
+        emoji: '🎾',
+        description: 'ポンの応用 - インゾーンルール',
+        path: 'games/019-pong-volley/',
+        status: 'available',
+        difficulty: 'hard',
+        genre: 'action'
+    },
+    // ゲーム20～100は Coming Soon
+    ...Array.from({ length: 78 }, (_, i) => ({
+        id: `${String(i + 20).padStart(3, '0')}-game`,
+        number: i + 20,
+        name: `Game ${i + 20}`,
         emoji: '🎯',
         description: 'Coming Soon',
         path: null,

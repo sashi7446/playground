@@ -1,0 +1,392 @@
+const CANVAS_WIDTH = 800;
+const CANVAS_HEIGHT = 600;
+const NET_Y = CANVAS_HEIGHT / 2;
+const PLAYER_WIDTH = 30;
+const PLAYER_HEIGHT = 30;
+const BALL_SIZE = 8;
+
+// In-Zone dimensions (positioned in middle of each court, away from walls)
+const IN_ZONE_WIDTH = 120;
+const IN_ZONE_HEIGHT = 100;
+const IN_ZONE_MARGIN_FROM_NET = 80;  // Distance from net
+const IN_ZONE_X = (CANVAS_WIDTH - IN_ZONE_WIDTH) / 2;
+
+// Player in-zone (opponent's side, below net)
+const OPPONENT_IN_ZONE = {
+    x: IN_ZONE_X,
+    y: NET_Y + IN_ZONE_MARGIN_FROM_NET,
+    width: IN_ZONE_WIDTH,
+    height: IN_ZONE_HEIGHT
+};
+
+// AI in-zone (player's side, above net)
+const PLAYER_IN_ZONE = {
+    x: IN_ZONE_X,
+    y: NET_Y - IN_ZONE_MARGIN_FROM_NET - IN_ZONE_HEIGHT,
+    width: IN_ZONE_WIDTH,
+    height: IN_ZONE_HEIGHT
+};
+
+class PongVolley {
+    constructor(difficulty = 'normal') {
+        this.difficulty = difficulty;
+        this.canvas = document.getElementById('gameCanvas');
+        this.ctx = this.canvas.getContext('2d');
+
+        this.initGame();
+        this.setupControls();
+        this.startGame();
+    }
+
+    initGame() {
+        // Player (human) - starts in player's zone
+        this.player = {
+            x: CANVAS_WIDTH / 2 - PLAYER_WIDTH / 2,
+            y: CANVAS_HEIGHT - 80,
+            width: PLAYER_WIDTH,
+            height: PLAYER_HEIGHT,
+            vx: 0,
+            vy: 0,
+            speed: 5
+        };
+
+        // AI - starts in AI's zone
+        this.ai = {
+            x: CANVAS_WIDTH / 2 - PLAYER_WIDTH / 2,
+            y: 50,
+            width: PLAYER_WIDTH,
+            height: PLAYER_HEIGHT,
+            vx: 0,
+            vy: 0,
+            speed: this.getAISpeed()
+        };
+
+        // Ball
+        this.ball = {
+            x: CANVAS_WIDTH / 2,
+            y: NET_Y - 50,
+            vx: 4,
+            vy: -4,
+            speed: 1,
+            size: BALL_SIZE,
+            lastHitBy: 'ai'  // Track who hit it last
+        };
+
+        this.scores = { player: 0, ai: 0 };
+        this.gameRunning = true;
+        this.keys = {};
+
+        // Track if ball passed through in-zone (for scoring)
+        this.ballPassedThroughInZone = false;
+    }
+
+    getAISpeed() {
+        switch(this.difficulty) {
+            case 'easy': return 2.5;
+            case 'normal': return 3.5;
+            case 'hard': return 4.5;
+            default: return 3.5;
+        }
+    }
+
+    setupControls() {
+        window.addEventListener('keydown', (e) => {
+            this.keys[e.key.toLowerCase()] = true;
+        });
+        window.addEventListener('keyup', (e) => {
+            this.keys[e.key.toLowerCase()] = false;
+        });
+
+        document.getElementById('difficulty').addEventListener('change', (e) => {
+            this.difficulty = e.target.value;
+            this.ai.speed = this.getAISpeed();
+        });
+    }
+
+    startGame() {
+        setInterval(() => this.update(), 1000 / 60);
+        setInterval(() => this.draw(), 1000 / 60);
+    }
+
+    update() {
+        if (!this.gameRunning) return;
+
+        this.updatePlayerMovement();
+        this.updateAIMovement();
+        this.updateBall();
+        this.checkCollisions();
+        this.checkWallCollisions();
+    }
+
+    updatePlayerMovement() {
+        const moveX =
+            (this.keys['arrowleft'] || this.keys['a'] ? -1 : 0) +
+            (this.keys['arrowright'] || this.keys['d'] ? 1 : 0);
+        const moveY =
+            (this.keys['arrowup'] || this.keys['w'] ? -1 : 0) +
+            (this.keys['arrowdown'] || this.keys['s'] ? 1 : 0);
+
+        this.player.x += moveX * this.player.speed;
+        this.player.y += moveY * this.player.speed;
+
+        // Keep player in their own court (above net)
+        this.player.x = Math.max(0, Math.min(CANVAS_WIDTH - PLAYER_WIDTH, this.player.x));
+        this.player.y = Math.max(0, Math.min(NET_Y - PLAYER_HEIGHT - 10, this.player.y));
+    }
+
+    updateAIMovement() {
+        // AI tracks ball with some variation based on difficulty
+        const targetX = this.ball.x - PLAYER_WIDTH / 2;
+        const targetY = this.ball.y - PLAYER_HEIGHT / 2;
+
+        let aiX = this.ai.x;
+        let aiY = this.ai.y;
+
+        // Add reaction delay for easier difficulties
+        let delayFactor = 1;
+        if (this.difficulty === 'easy') {
+            delayFactor = 0.5 + Math.random() * 0.3;
+        } else if (this.difficulty === 'normal') {
+            delayFactor = 0.7 + Math.random() * 0.2;
+        }
+
+        // Move towards target
+        if (Math.abs(targetX - aiX) > 2) {
+            this.ai.x += Math.sign(targetX - aiX) * this.ai.speed * delayFactor;
+        }
+        if (Math.abs(targetY - aiY) > 2) {
+            this.ai.y += Math.sign(targetY - aiY) * this.ai.speed * delayFactor;
+        }
+
+        // Keep AI in their own court (below net)
+        this.ai.x = Math.max(0, Math.min(CANVAS_WIDTH - PLAYER_WIDTH, this.ai.x));
+        this.ai.y = Math.max(NET_Y + 10, Math.min(CANVAS_HEIGHT - PLAYER_HEIGHT, this.ai.y));
+    }
+
+    updateBall() {
+        this.ball.x += this.ball.vx * this.ball.speed;
+        this.ball.y += this.ball.vy * this.ball.speed;
+
+        // Top and bottom wall bouncing
+        if (this.ball.y - this.ball.size / 2 < 0) {
+            this.ball.y = this.ball.size / 2;
+            this.ball.vy = Math.abs(this.ball.vy);
+        }
+        if (this.ball.y + this.ball.size / 2 > CANVAS_HEIGHT) {
+            this.ball.y = CANVAS_HEIGHT - this.ball.size / 2;
+            this.ball.vy = -Math.abs(this.ball.vy);
+        }
+
+        // Side wall bouncing
+        if (this.ball.x - this.ball.size / 2 < 0) {
+            this.ball.x = this.ball.size / 2;
+            this.ball.vx = Math.abs(this.ball.vx);
+        }
+        if (this.ball.x + this.ball.size / 2 > CANVAS_WIDTH) {
+            this.ball.x = CANVAS_WIDTH - this.ball.size / 2;
+            this.ball.vx = -Math.abs(this.ball.vx);
+        }
+    }
+
+    checkCollisions() {
+        // Collision with player
+        if (this.rectCircleCollision(this.player, this.ball)) {
+            this.ball.vx = Math.abs(this.ball.vx);
+            this.ball.x = this.player.x + PLAYER_WIDTH + this.ball.size / 2;
+            this.ball.lastHitBy = 'player';
+            this.ballPassedThroughInZone = false;  // Reset zone tracking
+            this.ball.speed = Math.min(this.ball.speed + 0.02, 2);
+
+            // Add spin based on hit location
+            const hitPos = (this.ball.y - this.player.y) / this.player.height;
+            this.ball.vy += (hitPos - 0.5) * 3;
+        }
+
+        // Collision with AI
+        if (this.rectCircleCollision(this.ai, this.ball)) {
+            this.ball.vx = -Math.abs(this.ball.vx);
+            this.ball.x = this.ai.x - this.ball.size / 2;
+            this.ball.lastHitBy = 'ai';
+            this.ballPassedThroughInZone = false;  // Reset zone tracking
+            this.ball.speed = Math.min(this.ball.speed + 0.02, 2);
+
+            // Add spin based on hit location
+            const hitPos = (this.ball.y - this.ai.y) / this.ai.height;
+            this.ball.vy += (hitPos - 0.5) * 3;
+        }
+
+        // Check if ball passes through in-zone
+        this.checkInZonePassage();
+    }
+
+    checkInZonePassage() {
+        // Check if ball passes through opponent's in-zone (when player hits)
+        if (this.ball.lastHitBy === 'player') {
+            if (this.isPointInZone(this.ball.x, this.ball.y, OPPONENT_IN_ZONE)) {
+                this.ballPassedThroughInZone = true;
+            }
+        }
+        // Check if ball passes through player's in-zone (when AI hits)
+        else if (this.ball.lastHitBy === 'ai') {
+            if (this.isPointInZone(this.ball.x, this.ball.y, PLAYER_IN_ZONE)) {
+                this.ballPassedThroughInZone = true;
+            }
+        }
+    }
+
+    checkWallCollisions() {
+        // Check if ball crosses left or right boundary (out of bounds)
+        if (this.ball.x < -50 || this.ball.x > CANVAS_WIDTH + 50) {
+            this.scorePoint();
+            this.resetBall();
+        }
+    }
+
+    scorePoint() {
+        if (this.ball.lastHitBy === 'player') {
+            // Player hit it
+            if (this.ballPassedThroughInZone) {
+                // Ball passed through opponent's in-zone → player scores
+                this.scores.player++;
+            } else {
+                // Ball didn't pass through → AI scores
+                this.scores.ai++;
+            }
+        } else if (this.ball.lastHitBy === 'ai') {
+            // AI hit it
+            if (this.ballPassedThroughInZone) {
+                // Ball passed through player's in-zone → AI scores
+                this.scores.ai++;
+            } else {
+                // Ball didn't pass through → player scores
+                this.scores.player++;
+            }
+        }
+
+        this.updateScoreDisplay();
+
+        // Check win condition (first to 11)
+        if (this.scores.player >= 11 || this.scores.ai >= 11) {
+            this.endGame();
+        }
+    }
+
+    resetBall() {
+        this.ball.x = CANVAS_WIDTH / 2;
+        this.ball.y = NET_Y;
+        this.ball.vx = (Math.random() > 0.5 ? 1 : -1) * 4;
+        this.ball.vy = (Math.random() > 0.5 ? 1 : -1) * 4;
+        this.ball.speed = 1;
+        this.ball.lastHitBy = Math.random() > 0.5 ? 'player' : 'ai';
+        this.ballPassedThroughInZone = false;
+    }
+
+    updateScoreDisplay() {
+        document.getElementById('playerScore').textContent = this.scores.player;
+        document.getElementById('aiScore').textContent = this.scores.ai;
+    }
+
+    endGame() {
+        this.gameRunning = false;
+        const winner = this.scores.player > this.scores.ai ? 'Player' : 'AI';
+        document.getElementById('gameStatus').textContent = `Game Over! ${winner} Wins!`;
+
+        // Record play
+        const duration = Math.random() * 300 + 60;
+        const score = this.scores.player;
+        const result = this.scores.player > this.scores.ai ? 'win' : 'loss';
+        GameStorage.recordPlay('019', score, result, duration);
+    }
+
+    rectCircleCollision(rect, circle) {
+        const closestX = Math.max(rect.x, Math.min(circle.x, rect.x + rect.width));
+        const closestY = Math.max(rect.y, Math.min(circle.y, rect.y + rect.height));
+
+        const dx = circle.x - closestX;
+        const dy = circle.y - closestY;
+
+        return (dx * dx + dy * dy) < (circle.size / 2) * (circle.size / 2);
+    }
+
+    isPointInZone(x, y, zone) {
+        return x >= zone.x && x <= zone.x + zone.width &&
+               y >= zone.y && y <= zone.y + zone.height;
+    }
+
+    draw() {
+        // Clear canvas
+        this.ctx.fillStyle = '#000';
+        this.ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+
+        // Draw net
+        this.ctx.strokeStyle = '#fff';
+        this.ctx.lineWidth = 2;
+        this.ctx.setLineDash([10, 10]);
+        this.ctx.beginPath();
+        this.ctx.moveTo(0, NET_Y);
+        this.ctx.lineTo(CANVAS_WIDTH, NET_Y);
+        this.ctx.stroke();
+        this.ctx.setLineDash([]);
+
+        // Draw court divider text
+        this.ctx.fillStyle = '#666';
+        this.ctx.font = '12px Arial';
+        this.ctx.textAlign = 'center';
+        this.ctx.fillText("PLAYER COURT", CANVAS_WIDTH / 2, NET_Y / 2);
+        this.ctx.fillText("AI COURT", CANVAS_WIDTH / 2, NET_Y + NET_Y / 2);
+
+        // Draw in-zones
+        this.drawInZone(PLAYER_IN_ZONE, '#3388ff', 'alpha');
+        this.drawInZone(OPPONENT_IN_ZONE, '#ff3366', 'omega');
+
+        // Draw player
+        this.ctx.fillStyle = '#00ff00';
+        this.ctx.fillRect(this.player.x, this.player.y, PLAYER_WIDTH, PLAYER_HEIGHT);
+        this.ctx.strokeStyle = '#00ff00';
+        this.ctx.lineWidth = 2;
+        this.ctx.strokeRect(this.player.x, this.player.y, PLAYER_WIDTH, PLAYER_HEIGHT);
+
+        // Draw AI
+        this.ctx.fillStyle = '#ff0000';
+        this.ctx.fillRect(this.ai.x, this.ai.y, PLAYER_WIDTH, PLAYER_HEIGHT);
+        this.ctx.strokeStyle = '#ff0000';
+        this.ctx.lineWidth = 2;
+        this.ctx.strokeRect(this.ai.x, this.ai.y, PLAYER_WIDTH, PLAYER_HEIGHT);
+
+        // Draw ball
+        this.ctx.fillStyle = '#fff';
+        this.ctx.beginPath();
+        this.ctx.arc(this.ball.x, this.ball.y, this.ball.size / 2, 0, Math.PI * 2);
+        this.ctx.fill();
+
+        // Draw zone passage indicator
+        if (this.ball.lastHitBy === 'player' && this.ballPassedThroughInZone) {
+            this.ctx.fillStyle = '#ffff00';
+            this.ctx.font = 'bold 14px Arial';
+            this.ctx.textAlign = 'center';
+            this.ctx.fillText("✓ Zone Active", CANVAS_WIDTH / 2, 30);
+        }
+    }
+
+    drawInZone(zone, color, label) {
+        // Semi-transparent fill
+        this.ctx.fillStyle = color + '33';  // 33 = 20% opacity
+        this.ctx.fillRect(zone.x, zone.y, zone.width, zone.height);
+
+        // Border
+        this.ctx.strokeStyle = color;
+        this.ctx.lineWidth = 2;
+        this.ctx.strokeRect(zone.x, zone.y, zone.width, zone.height);
+
+        // Label
+        this.ctx.fillStyle = color;
+        this.ctx.font = 'bold 12px Arial';
+        this.ctx.textAlign = 'center';
+        this.ctx.fillText(label, zone.x + zone.width / 2, zone.y + zone.height / 2 + 5);
+    }
+}
+
+// Initialize game
+document.addEventListener('DOMContentLoaded', () => {
+    new PongVolley('normal');
+});
