@@ -1,0 +1,135 @@
+.ttt-controls {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.player-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.ttt-board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    max-width: 300px;
+    margin: 30px auto;
+    background: #333;
+    border: 3px solid #222;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    padding: 3px;
+}
+
+.ttt-cell {
+    background: white;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.ttt-cell.playable:hover {
+    background: #f0f0f0;
+}
+
+.ttt-text {
+    font-size: 3em;
+    font-weight: bold;
+    animation: popIn 0.3s ease-out;
+}
+
+.ttt-text.x {
+    color: #ff6b6b;
+}
+
+.ttt-text.o {
+    color: #4ecdc4;
+}
+
+@keyframes popIn {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.status-display {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 8px;
+    margin: 20px auto;
+    max-width: 300px;
+    color: white;
+    font-weight: bold;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: white;
+}
+
+@media (max-width: 600px) {
+    .ttt-board {
+        max-width: 100%;
+        margin: 15px;
+    }
+
+    .ttt-cell {
+        min-height: 80px;
+    }
+
+    .ttt-text {
+        font-size: 2em;
+    }
+
+    .status-display {
+        max-width: 100%;
+        margin: 15px;
+    }
+}

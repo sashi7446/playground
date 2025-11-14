@@ -191,11 +191,23 @@ const GAMES_LIST = [
         difficulty: 'normal',
         genre: 'action'
     },
-    // ゲーム17～100は Coming Soon
-    ...Array.from({ length: 81 }, (_, i) => ({
-        id: `${String(i + 17).padStart(3, '0')}-game`,
-        number: i + 17,
-        name: `Game ${i + 17}`,
+    // ゲーム017: Tic Tac Toe
+    {
+        id: '017-tic-tac-toe',
+        number: 17,
+        name: 'Tic Tac Toe',
+        emoji: '⭕',
+        description: '三目並べ - 完全AI',
+        path: 'games/017-tic-tac-toe/',
+        status: 'available',
+        difficulty: 'hard',
+        genre: 'strategy'
+    },
+    // ゲーム18～100は Coming Soon
+    ...Array.from({ length: 80 }, (_, i) => ({
+        id: `${String(i + 18).padStart(3, '0')}-game`,
+        number: i + 18,
+        name: `Game ${i + 18}`,
         emoji: '🎯',
         description: 'Coming Soon',
         path: null,
