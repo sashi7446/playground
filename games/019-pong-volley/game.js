@@ -286,30 +286,25 @@ class PongVolley {
         this.ball.prevX = CANVAS_WIDTH / 2;
         this.ball.prevY = NET_Y;
 
-        // Reset player and AI positions
+        // Reset player and AI positions to center
         this.player.x = CANVAS_WIDTH / 2 - PLAYER_WIDTH / 2;
         this.player.y = CANVAS_HEIGHT - 80;
         this.ai.x = CANVAS_WIDTH / 2 - PLAYER_WIDTH / 2;
         this.ai.y = 50;
 
-        // Consistent serve-like reset: always towards player with slight angle variation
+        // Consistent serve: always towards player with minimal angle variation
         // Direction alternates based on total points
         const totalPoints = this.scores.player + this.scores.ai;
         const direction = (totalPoints % 2 === 0) ? -1 : 1;  // Alternate left/right
 
-        // Base velocity towards player
+        // Base velocity towards player - consistent each time
+        // Slight random variation: ±0.5 horizontal only
         const baseVx = 3 * direction;
         const baseVy = 4;
+        const xyVariation = (Math.random() - 0.5) * 0.5;  // ±0.25 horizontal variation only
 
-        // Calculate base angle and add ±3 degrees of variation
-        const baseAngle = Math.atan2(baseVy, Math.abs(baseVx));
-        const angleVariation = (Math.random() - 0.5) * (3 * Math.PI / 180);  // ±3 degrees
-        const finalAngle = baseAngle + angleVariation;
-
-        // Calculate final velocity based on angle with base speed
-        const baseSpeed = Math.sqrt(baseVx * baseVx + baseVy * baseVy);
-        this.ball.vx = baseSpeed * Math.cos(finalAngle) * direction;
-        this.ball.vy = baseSpeed * Math.sin(finalAngle);
+        this.ball.vx = baseVx + xyVariation;
+        this.ball.vy = baseVy;
 
         this.ball.speed = 1;
         this.ball.lastHitBy = 'ai';  // Start as if AI just served
