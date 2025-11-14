@@ -117,6 +117,7 @@ class PongVolley {
         this.updateAIMovement();
         this.updateBall();
         this.checkCollisions();
+        this.updateDebugInfo();
     }
 
     updatePlayerMovement() {
@@ -421,28 +422,22 @@ class PongVolley {
             this.ctx.textAlign = 'center';
             this.ctx.fillText("✓ Zone Active", CANVAS_WIDTH / 2, 30);
         }
-
-        // Draw debug information
-        this.drawDebugInfo();
     }
 
-    drawDebugInfo() {
-        // Draw debug info in top-left corner
-        this.ctx.fillStyle = '#00ff00';
-        this.ctx.font = '12px monospace';
-        this.ctx.textAlign = 'left';
+    updateDebugInfo() {
+        // Update HTML debug info display
+        const debugElement = document.getElementById('debugInfo');
+        if (!debugElement) return;
 
-        const debugInfo = [
-            `Last Hit: ${this.ball.lastHitBy === 'player' ? '🟢 PLAYER' : '🔴 AI'}`,
-            `Zone State: ${this.ballPassedThroughInZone ? '✓ IN (イン状態)' : '✗ OUT (アウト状態)'}`,
-            `Ball Speed: ${this.ball.speed.toFixed(2)}`
-        ];
+        const lastHitText = this.ball.lastHitBy === 'player' ? '🟢 PLAYER' : '🔴 AI';
+        const zoneStateText = this.ballPassedThroughInZone ? '✓ IN (イン状態)' : '✗ OUT (アウト状態)';
+        const ballSpeedText = this.ball.speed.toFixed(2);
 
-        let y = 15;
-        for (const line of debugInfo) {
-            this.ctx.fillText(line, 10, y);
-            y += 20;
-        }
+        debugElement.innerHTML = `
+            Last Hit: ${lastHitText}<br>
+            Zone State: ${zoneStateText}<br>
+            Ball Speed: ${ballSpeedText}
+        `;
     }
 
     drawInZone(zone, color, label) {
