@@ -65,6 +65,8 @@ class PongVolley {
         this.ball = {
             x: CANVAS_WIDTH / 2,
             y: NET_Y,
+            prevX: CANVAS_WIDTH / 2,
+            prevY: NET_Y,
             vx: (Math.random() > 0.5 ? 1 : -1) * 4,
             vy: (Math.random() > 0.5 ? 1 : -1) * 4,
             speed: 1,
@@ -163,6 +165,10 @@ class PongVolley {
     }
 
     updateBall() {
+        // Save previous position for in-zone detection
+        this.ball.prevX = this.ball.x;
+        this.ball.prevY = this.ball.y;
+
         this.ball.x += this.ball.vx * this.ball.speed;
         this.ball.y += this.ball.vy * this.ball.speed;
 
@@ -217,13 +223,28 @@ class PongVolley {
     checkInZonePassage() {
         // Check if ball passes through opponent's in-zone (when player hits)
         if (this.ball.lastHitBy === 'player') {
-            if (this.isPointInZone(this.ball.x, this.ball.y, OPPONENT_IN_ZONE)) {
+            // More robust detection: check if trajectory crossed the zone
+            const ballInZoneNow = this.isPointInZone(this.ball.x, this.ball.y, OPPONENT_IN_ZONE);
+            const ballInZonePrev = this.isPointInZone(this.ball.prevX, this.ball.prevY, OPPONENT_IN_ZONE);
+
+            // If now in zone OR trajectory crossed into zone
+            if (ballInZoneNow) {
+                this.ballPassedThroughInZone = true;
+            }
+            // Also check for line intersection with zone for fast balls
+            else if (!ballInZonePrev && this.lineIntersectsZone(this.ball.prevX, this.ball.prevY, this.ball.x, this.ball.y, OPPONENT_IN_ZONE)) {
                 this.ballPassedThroughInZone = true;
             }
         }
         // Check if ball passes through player's in-zone (when AI hits)
         else if (this.ball.lastHitBy === 'ai') {
-            if (this.isPointInZone(this.ball.x, this.ball.y, PLAYER_IN_ZONE)) {
+            const ballInZoneNow = this.isPointInZone(this.ball.x, this.ball.y, PLAYER_IN_ZONE);
+            const ballInZonePrev = this.isPointInZone(this.ball.prevX, this.ball.prevY, PLAYER_IN_ZONE);
+
+            if (ballInZoneNow) {
+                this.ballPassedThroughInZone = true;
+            }
+            else if (!ballInZonePrev && this.lineIntersectsZone(this.ball.prevX, this.ball.prevY, this.ball.x, this.ball.y, PLAYER_IN_ZONE)) {
                 this.ballPassedThroughInZone = true;
             }
         }
@@ -261,6 +282,8 @@ class PongVolley {
     resetBall() {
         this.ball.x = CANVAS_WIDTH / 2;
         this.ball.y = NET_Y;
+        this.ball.prevX = CANVAS_WIDTH / 2;
+        this.ball.prevY = NET_Y;
         this.ball.vx = (Math.random() > 0.5 ? 1 : -1) * 4;
         this.ball.vy = (Math.random() > 0.5 ? 1 : -1) * 4;
         this.ball.speed = 1;
@@ -298,6 +321,47 @@ class PongVolley {
     isPointInZone(x, y, zone) {
         return x >= zone.x && x <= zone.x + zone.width &&
                y >= zone.y && y <= zone.y + zone.height;
+    }
+
+    lineIntersectsZone(x1, y1, x2, y2, zone) {
+        // Check if line segment from (x1,y1) to (x2,y2) intersects with zone rectangle
+        // Using parametric line equation and AABB intersection
+
+        const dx = x2 - x1;
+        const dy = y2 - y1;
+
+        // Check if line crosses zone boundaries
+        const zoneLeft = zone.x;
+        const zoneRight = zone.x + zone.width;
+        const zoneTop = zone.y;
+        const zoneBottom = zone.y + zone.height;
+
+        // Find t values where line crosses zone boundaries
+        let tMin = -Infinity;
+        let tMax = Infinity;
+
+        // Check X axis
+        if (dx !== 0) {
+            const t1 = (zoneLeft - x1) / dx;
+            const t2 = (zoneRight - x1) / dx;
+            tMin = Math.max(tMin, Math.min(t1, t2));
+            tMax = Math.min(tMax, Math.max(t1, t2));
+        } else if (x1 < zoneLeft || x1 > zoneRight) {
+            return false;  // Line is vertical and outside zone X range
+        }
+
+        // Check Y axis
+        if (dy !== 0) {
+            const t1 = (zoneTop - y1) / dy;
+            const t2 = (zoneBottom - y1) / dy;
+            tMin = Math.max(tMin, Math.min(t1, t2));
+            tMax = Math.min(tMax, Math.max(t1, t2));
+        } else if (y1 < zoneTop || y1 > zoneBottom) {
+            return false;  // Line is horizontal and outside zone Y range
+        }
+
+        // Check if segment (t in [0,1]) intersects with zone (t in [tMin, tMax])
+        return tMin <= 1 && tMax >= 0 && tMin <= tMax;
     }
 
     draw() {
