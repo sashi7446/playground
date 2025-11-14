@@ -417,6 +417,28 @@ class PongVolley {
             this.ctx.textAlign = 'center';
             this.ctx.fillText("✓ Zone Active", CANVAS_WIDTH / 2, 30);
         }
+
+        // Draw debug information
+        this.drawDebugInfo();
+    }
+
+    drawDebugInfo() {
+        // Draw debug info in top-left corner
+        this.ctx.fillStyle = '#00ff00';
+        this.ctx.font = '12px monospace';
+        this.ctx.textAlign = 'left';
+
+        const debugInfo = [
+            `Last Hit: ${this.ball.lastHitBy === 'player' ? '🟢 PLAYER' : '🔴 AI'}`,
+            `Zone State: ${this.ballPassedThroughInZone ? '✓ IN (イン状態)' : '✗ OUT (アウト状態)'}`,
+            `Ball Speed: ${this.ball.speed.toFixed(2)}`
+        ];
+
+        let y = 15;
+        for (const line of debugInfo) {
+            this.ctx.fillText(line, 10, y);
+            y += 20;
+        }
     }
 
     drawInZone(zone, color, label) {
