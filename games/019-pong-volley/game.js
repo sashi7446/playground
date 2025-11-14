@@ -11,16 +11,16 @@ const IN_ZONE_HEIGHT = 100;
 const IN_ZONE_MARGIN_FROM_NET = 80;  // Distance from net
 const IN_ZONE_X = (CANVAS_WIDTH - IN_ZONE_WIDTH) / 2;
 
-// Player in-zone (opponent's side, below net)
-const OPPONENT_IN_ZONE = {
+// Player in-zone (player's side, below net) - Player is at bottom
+const PLAYER_IN_ZONE = {
     x: IN_ZONE_X,
     y: NET_Y + IN_ZONE_MARGIN_FROM_NET,
     width: IN_ZONE_WIDTH,
     height: IN_ZONE_HEIGHT
 };
 
-// AI in-zone (player's side, above net)
-const PLAYER_IN_ZONE = {
+// AI in-zone (opponent's side, above net) - AI is at top
+const OPPONENT_IN_ZONE = {
     x: IN_ZONE_X,
     y: NET_Y - IN_ZONE_MARGIN_FROM_NET - IN_ZONE_HEIGHT,
     width: IN_ZONE_WIDTH,
@@ -39,7 +39,7 @@ class PongVolley {
     }
 
     initGame() {
-        // Player (human) - starts in player's zone
+        // Player (human) - starts in player's zone at BOTTOM
         this.player = {
             x: CANVAS_WIDTH / 2 - PLAYER_WIDTH / 2,
             y: CANVAS_HEIGHT - 80,
@@ -50,7 +50,7 @@ class PongVolley {
             speed: 5
         };
 
-        // AI - starts in AI's zone
+        // AI - starts in AI's zone at TOP
         this.ai = {
             x: CANVAS_WIDTH / 2 - PLAYER_WIDTH / 2,
             y: 50,
@@ -64,9 +64,9 @@ class PongVolley {
         // Ball
         this.ball = {
             x: CANVAS_WIDTH / 2,
-            y: NET_Y - 50,
-            vx: 4,
-            vy: -4,
+            y: NET_Y,
+            vx: (Math.random() > 0.5 ? 1 : -1) * 4,
+            vy: (Math.random() > 0.5 ? 1 : -1) * 4,
             speed: 1,
             size: BALL_SIZE,
             lastHitBy: 'ai'  // Track who hit it last
@@ -115,7 +115,6 @@ class PongVolley {
         this.updateAIMovement();
         this.updateBall();
         this.checkCollisions();
-        this.checkWallCollisions();
     }
 
     updatePlayerMovement() {
@@ -129,9 +128,9 @@ class PongVolley {
         this.player.x += moveX * this.player.speed;
         this.player.y += moveY * this.player.speed;
 
-        // Keep player in their own court (above net)
+        // Keep player in their own court (below net, at bottom)
         this.player.x = Math.max(0, Math.min(CANVAS_WIDTH - PLAYER_WIDTH, this.player.x));
-        this.player.y = Math.max(0, Math.min(NET_Y - PLAYER_HEIGHT - 10, this.player.y));
+        this.player.y = Math.max(NET_Y + 10, Math.min(CANVAS_HEIGHT - PLAYER_HEIGHT, this.player.y));
     }
 
     updateAIMovement() {
@@ -158,9 +157,9 @@ class PongVolley {
             this.ai.y += Math.sign(targetY - aiY) * this.ai.speed * delayFactor;
         }
 
-        // Keep AI in their own court (below net)
+        // Keep AI in their own court (above net, at top)
         this.ai.x = Math.max(0, Math.min(CANVAS_WIDTH - PLAYER_WIDTH, this.ai.x));
-        this.ai.y = Math.max(NET_Y + 10, Math.min(CANVAS_HEIGHT - PLAYER_HEIGHT, this.ai.y));
+        this.ai.y = Math.max(0, Math.min(NET_Y - PLAYER_HEIGHT - 10, this.ai.y));
     }
 
     updateBall() {
@@ -177,14 +176,10 @@ class PongVolley {
             this.ball.vy = -Math.abs(this.ball.vy);
         }
 
-        // Side wall bouncing
-        if (this.ball.x - this.ball.size / 2 < 0) {
-            this.ball.x = this.ball.size / 2;
-            this.ball.vx = Math.abs(this.ball.vx);
-        }
-        if (this.ball.x + this.ball.size / 2 > CANVAS_WIDTH) {
-            this.ball.x = CANVAS_WIDTH - this.ball.size / 2;
-            this.ball.vx = -Math.abs(this.ball.vx);
+        // Side wall collision - Calculate score based on in-zone passage
+        if (this.ball.x - this.ball.size / 2 < 0 || this.ball.x + this.ball.size / 2 > CANVAS_WIDTH) {
+            this.scorePoint();
+            this.resetBall();
         }
     }
 
@@ -231,14 +226,6 @@ class PongVolley {
             if (this.isPointInZone(this.ball.x, this.ball.y, PLAYER_IN_ZONE)) {
                 this.ballPassedThroughInZone = true;
             }
-        }
-    }
-
-    checkWallCollisions() {
-        // Check if ball crosses left or right boundary (out of bounds)
-        if (this.ball.x < -50 || this.ball.x > CANVAS_WIDTH + 50) {
-            this.scorePoint();
-            this.resetBall();
         }
     }
 
@@ -332,12 +319,12 @@ class PongVolley {
         this.ctx.fillStyle = '#666';
         this.ctx.font = '12px Arial';
         this.ctx.textAlign = 'center';
-        this.ctx.fillText("PLAYER COURT", CANVAS_WIDTH / 2, NET_Y / 2);
-        this.ctx.fillText("AI COURT", CANVAS_WIDTH / 2, NET_Y + NET_Y / 2);
+        this.ctx.fillText("AI COURT", CANVAS_WIDTH / 2, NET_Y / 2);
+        this.ctx.fillText("PLAYER COURT", CANVAS_WIDTH / 2, NET_Y + NET_Y / 2);
 
         // Draw in-zones
-        this.drawInZone(PLAYER_IN_ZONE, '#3388ff', 'alpha');
-        this.drawInZone(OPPONENT_IN_ZONE, '#ff3366', 'omega');
+        this.drawInZone(PLAYER_IN_ZONE, '#00ff00', 'Your Zone');
+        this.drawInZone(OPPONENT_IN_ZONE, '#ff3366', 'Target Zone');
 
         // Draw player
         this.ctx.fillStyle = '#00ff00';
