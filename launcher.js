@@ -131,15 +131,17 @@ const GAMES_LIST = [
         difficulty: 'normal',
         genre: 'casual'
     },
-    // ゲーム012: Coming Soon
+    // ゲーム012: Connect Four
     {
-        id: '012-dungeon',
+        id: '012-connect-four',
         number: 12,
-        name: 'Game 012',
-        emoji: '🎯',
-        description: 'Coming Soon',
-        path: null,
-        status: 'coming-soon'
+        name: 'Connect Four',
+        emoji: '🔵',
+        description: '4目並べ - AIと対戦',
+        path: 'games/012-connect-four/',
+        status: 'available',
+        difficulty: 'normal',
+        genre: 'strategy'
     },
     // ゲーム013: Turn-based Battle
     {
@@ -190,7 +192,7 @@ const GAMES_LIST = [
         genre: 'action'
     },
     // ゲーム17～100は Coming Soon
-    ...Array.from({ length: 82 }, (_, i) => ({
+    ...Array.from({ length: 81 }, (_, i) => ({
         id: `${String(i + 17).padStart(3, '0')}-game`,
         number: i + 17,
         name: `Game ${i + 17}`,
