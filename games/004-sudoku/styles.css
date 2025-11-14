@@ -1,0 +1,181 @@
+.sudoku-controls {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.difficulty-select,
+.timer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+}
+
+.difficulty-select select {
+    padding: 8px 12px;
+    border: 2px solid white;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 0.95em;
+    cursor: pointer;
+}
+
+.difficulty-select select option {
+    background: #333;
+    color: white;
+}
+
+.timer {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.sudoku-board {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: 0;
+    max-width: 450px;
+    margin: 30px auto;
+    background: #333;
+    border: 3px solid #000;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.sudoku-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1;
+    background: white;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    transition: all 0.2s;
+    user-select: none;
+    position: relative;
+    min-height: 40px;
+}
+
+.sudoku-cell.right-border {
+    border-right: 3px solid #333;
+}
+
+.sudoku-cell.bottom-border {
+    border-bottom: 3px solid #333;
+}
+
+.sudoku-cell:hover {
+    background: #f5f5f5;
+}
+
+.sudoku-cell.selected {
+    background: #cce5ff;
+    border: 2px solid #667eea;
+}
+
+.sudoku-cell.related {
+    background: #f0f0f0;
+}
+
+.sudoku-cell.highlight {
+    background: #fff3cd;
+}
+
+.number {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.number.original {
+    color: #333;
+}
+
+.number.user {
+    color: #667eea;
+}
+
+.status-display {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 8px;
+    margin: 20px auto;
+    max-width: 450px;
+    color: white;
+    font-weight: bold;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
+    flex: 1;
+    min-width: 100px;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: white;
+}
+
+@media (max-width: 600px) {
+    .sudoku-board {
+        max-width: 100%;
+        margin: 15px;
+    }
+
+    .sudoku-cell {
+        min-height: 35px;
+    }
+
+    .number {
+        font-size: 1.2em;
+    }
+
+    .button-group {
+        max-width: 100%;
+        margin: 15px;
+        flex-direction: column;
+    }
+
+    .btn {
+        flex: none;
+        width: 100%;
+    }
+
+    .sudoku-controls {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku - Game Collection</title>
+    <link rel="stylesheet" href="../../shared/styles/common.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <h1 class="game-title">🔢 Sudoku</h1>
+            <div class="sudoku-controls">
+                <div class="difficulty-select">
+                    <label for="difficulty">難易度:</label>
+                    <select id="difficulty">
+                        <option value="easy">Easy</option>
+                        <option value="normal" selected>Normal</option>
+                        <option value="hard">Hard</option>
+                    </select>
+                </div>
+                <div class="timer">
+                    <span class="label">Time:</span>
+                    <span id="timer" class="value">00:00</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="gameBoard" class="sudoku-board"></div>
+
+        <div class="game-info">
+            <div class="status-display">
+                <p id="status">Game Started</p>
+            </div>
+            <div class="button-group">
+                <button id="newGameBtn" class="btn">New Game</button>
+                <button id="clearBtn" class="btn btn-secondary">Clear</button>
+                <button id="hintBtn" class="btn btn-secondary">Hint</button>
+                <a href="../../launcher.html" class="btn btn-secondary">Back</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../shared/utils/gameUtils.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>

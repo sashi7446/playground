@@ -1,0 +1,213 @@
+.shogi-controls {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.player-info,
+.difficulty-select {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+}
+
+.difficulty-select select {
+    padding: 8px 12px;
+    border: 2px solid white;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 0.95em;
+    cursor: pointer;
+}
+
+.difficulty-select select option {
+    background: #333;
+    color: white;
+}
+
+.shogi-board {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: 0;
+    max-width: 450px;
+    margin: 30px auto;
+    background: #d4a373;
+    border: 5px solid #8b6914;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), inset 0 0 20px rgba(0, 0, 0, 0.1);
+    aspect-ratio: 1;
+}
+
+.shogi-square {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1;
+    font-size: 2em;
+    cursor: pointer;
+    transition: all 0.2s;
+    user-select: none;
+    position: relative;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.shogi-square.light {
+    background: #e8d4b8;
+}
+
+.shogi-square.dark {
+    background: #d9c5a0;
+}
+
+.shogi-square:hover {
+    filter: brightness(1.05);
+}
+
+.shogi-square.selected {
+    background: #a8d5a8 !important;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.shogi-square.possible::after {
+    content: '';
+    position: absolute;
+    width: 20%;
+    height: 20%;
+    background: rgba(100, 150, 100, 0.5);
+    border-radius: 50%;
+}
+
+.shogi-piece {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    animation: popIn 0.3s ease-out;
+    font-weight: bold;
+}
+
+.shogi-piece.black {
+    color: #333;
+}
+
+.shogi-piece.white {
+    color: #f0f0f0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.status-display {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 8px;
+    margin: 20px auto;
+    max-width: 450px;
+    color: white;
+    font-weight: bold;
+}
+
+.captured-pieces {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 450px;
+    margin: 20px auto;
+    color: white;
+}
+
+.captured-black,
+.captured-white {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.captured-black h4,
+.captured-white h4 {
+    margin: 0 0 10px 0;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
+.pieces-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.captured-piece {
+    display: inline-block;
+    font-size: 1.2em;
+    padding: 5px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    min-width: 30px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: white;
+}
+
+@keyframes popIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 600px) {
+    .shogi-board {
+        max-width: 100%;
+        margin: 15px;
+    }
+
+    .captured-pieces {
+        max-width: 100%;
+        margin: 15px;
+    }
+
+    .shogi-controls {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
