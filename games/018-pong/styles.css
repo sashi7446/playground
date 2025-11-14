@@ -1,0 +1,133 @@
+.pong-controls {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.difficulty-select {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+}
+
+.difficulty-select select {
+    padding: 8px 12px;
+    border: 2px solid white;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 0.95em;
+    cursor: pointer;
+}
+
+.difficulty-select select option {
+    background: #333;
+    color: white;
+}
+
+.pong-canvas {
+    display: block;
+    max-width: 100%;
+    margin: 30px auto;
+    background: #000;
+    border: 3px solid #fff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    aspect-ratio: 2 / 1;
+}
+
+.status-display {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 8px;
+    margin: 20px auto;
+    max-width: 800px;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: white;
+}
+
+@media (max-width: 900px) {
+    .pong-canvas {
+        margin: 20px;
+    }
+
+    .status-display {
+        max-width: 90%;
+        margin: 20px auto;
+    }
+
+    .button-group {
+        max-width: 90%;
+        margin: 15px auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .pong-canvas {
+        margin: 15px;
+    }
+
+    .status-display {
+        max-width: 100%;
+        margin: 15px;
+        font-size: 0.9em;
+    }
+
+    .button-group {
+        max-width: 100%;
+        margin: 15px;
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .pong-controls {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

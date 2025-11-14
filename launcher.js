@@ -203,11 +203,23 @@ const GAMES_LIST = [
         difficulty: 'hard',
         genre: 'strategy'
     },
-    // ゲーム18～100は Coming Soon
-    ...Array.from({ length: 80 }, (_, i) => ({
-        id: `${String(i + 18).padStart(3, '0')}-game`,
-        number: i + 18,
-        name: `Game ${i + 18}`,
+    // ゲーム018: Pong
+    {
+        id: '018-pong',
+        number: 18,
+        name: 'Pong',
+        emoji: '🏓',
+        description: 'ポン - レトロアーケード',
+        path: 'games/018-pong/',
+        status: 'available',
+        difficulty: 'normal',
+        genre: 'action'
+    },
+    // ゲーム19～100は Coming Soon
+    ...Array.from({ length: 79 }, (_, i) => ({
+        id: `${String(i + 19).padStart(3, '0')}-game`,
+        number: i + 19,
+        name: `Game ${i + 19}`,
         emoji: '🎯',
         description: 'Coming Soon',
         path: null,

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pong - Game Collection</title>
+    <link rel="stylesheet" href="../../shared/styles/common.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <h1 class="game-title">🏓 Pong</h1>
+            <div class="pong-controls">
+                <div class="difficulty-select">
+                    <label for="difficulty">AI難易度:</label>
+                    <select id="difficulty">
+                        <option value="easy">Easy</option>
+                        <option value="normal" selected>Normal</option>
+                        <option value="hard">Hard</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <canvas id="gameCanvas" width="800" height="400" class="pong-canvas"></canvas>
+
+        <div class="game-info">
+            <div class="status-display">
+                <p id="status">Press SPACE to start</p>
+            </div>
+            <div class="button-group">
+                <button id="newGameBtn" class="btn">New Game</button>
+                <a href="../../launcher.html" class="btn btn-secondary">Back</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../shared/utils/gameUtils.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
