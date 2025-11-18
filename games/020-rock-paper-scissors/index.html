@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>020 - Rock Paper Scissors</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <h1>Rock Paper Scissors</h1>
+        </div>
+
+        <div class="game-info">
+            <div class="score-display">
+                <span>You: <span id="playerScore">0</span></span>
+                <span>AI: <span id="aiScore">0</span></span>
+            </div>
+            <div class="game-status" id="gameStatus">Choose your move!</div>
+        </div>
+
+        <div class="game-board">
+            <div class="moves-section">
+                <div class="your-choice">
+                    <h3>Your Choice</h3>
+                    <div class="choice-display" id="playerChoice">-</div>
+                </div>
+                <div class="vs">VS</div>
+                <div class="ai-choice">
+                    <h3>AI Choice</h3>
+                    <div class="choice-display" id="aiChoice">-</div>
+                </div>
+            </div>
+
+            <div class="buttons-section">
+                <button class="move-btn rock-btn" onclick="playGame('rock')">
+                    ✊ Rock
+                </button>
+                <button class="move-btn paper-btn" onclick="playGame('paper')">
+                    ✋ Paper
+                </button>
+                <button class="move-btn scissors-btn" onclick="playGame('scissors')">
+                    ✌️ Scissors
+                </button>
+            </div>
+        </div>
+
+        <div class="result-display" id="resultDisplay"></div>
+
+        <button class="reset-btn" onclick="resetGame()">Reset Game</button>
+    </div>
+
+    <script src="../../shared/utils/gameUtils.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>

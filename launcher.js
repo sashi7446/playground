@@ -227,11 +227,23 @@ const GAMES_LIST = [
         difficulty: 'hard',
         genre: 'action'
     },
-    // ゲーム20～100は Coming Soon
-    ...Array.from({ length: 78 }, (_, i) => ({
-        id: `${String(i + 20).padStart(3, '0')}-game`,
-        number: i + 20,
-        name: `Game ${i + 20}`,
+    // ゲーム020: Rock Paper Scissors
+    {
+        id: '020-rock-paper-scissors',
+        number: 20,
+        name: 'Rock Paper Scissors',
+        emoji: '✌️',
+        description: 'じゃんけん - AIと対戦',
+        path: 'games/020-rock-paper-scissors/',
+        status: 'available',
+        difficulty: 'easy',
+        genre: 'casual'
+    },
+    // ゲーム21～100は Coming Soon
+    ...Array.from({ length: 80 }, (_, i) => ({
+        id: `${String(i + 21).padStart(3, '0')}-game`,
+        number: i + 21,
+        name: `Game ${i + 21}`,
         emoji: '🎯',
         description: 'Coming Soon',
         path: null,
