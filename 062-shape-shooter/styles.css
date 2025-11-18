@@ -1,0 +1,91 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    font-family: Arial, sans-serif;
+}
+
+.game-container {
+    text-align: center;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+h1 {
+    margin: 0 0 10px 0;
+    color: #333;
+}
+
+.info {
+    margin: 10px 0;
+    color: #666;
+}
+
+.score {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #f5576c;
+}
+
+.game-area {
+    width: 400px;
+    height: 400px;
+    position: relative;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    margin: 15px 0;
+    background: #f9f9f9;
+    overflow: hidden;
+}
+
+.shape {
+    position: absolute;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+.shape:hover {
+    transform: scale(1.1);
+}
+
+.circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #ff6b6b;
+}
+
+.square {
+    width: 40px;
+    height: 40px;
+    background: #4ecdc4;
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 40px solid #ffe66d;
+}
+
+button {
+    padding: 12px 30px;
+    font-size: 16px;
+    background: #f5576c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: #e04758;
+}

@@ -1,0 +1,104 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    font-family: Arial, sans-serif;
+}
+
+.game-container {
+    text-align: center;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+h1 {
+    margin: 0 0 10px 0;
+    color: #333;
+}
+
+.info {
+    margin: 10px 0;
+    color: #666;
+}
+
+.score {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #a8edea;
+}
+
+.game-area {
+    width: 350px;
+    height: 350px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0;
+    margin: 15px 0;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #f9f9f9;
+}
+
+.cell {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #eee;
+}
+
+.cell.wall {
+    background: #333;
+}
+
+.cell.path {
+    background: #fff;
+}
+
+.cell.player {
+    background: #4ecdc4;
+    position: relative;
+}
+
+.cell.player::after {
+    content: '🏃';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+}
+
+.cell.goal {
+    background: #4caf50;
+    position: relative;
+}
+
+.cell.goal::after {
+    content: '🏁';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+}
+
+button {
+    padding: 12px 30px;
+    font-size: 16px;
+    background: #a8edea;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: #98ddd9;
+}

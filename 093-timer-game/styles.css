@@ -1,0 +1,86 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    font-family: Arial, sans-serif;
+}
+
+.game-container {
+    text-align: center;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+h1 {
+    margin: 0 0 10px 0;
+    color: #333;
+}
+
+.info {
+    margin: 10px 0;
+    color: #666;
+}
+
+.score {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #a8edea;
+}
+
+.game-area {
+    width: 350px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin: 15px 0;
+    padding: 30px;
+    background: #f9f9f9;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+}
+
+#timer {
+    font-size: 72px;
+    font-weight: bold;
+    color: #a8edea;
+    font-family: 'Courier New', monospace;
+}
+
+#stopBtn {
+    padding: 20px 50px;
+    font-size: 24px;
+    background: #a8edea;
+    color: #333;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#stopBtn:hover {
+    background: #98ddd9;
+}
+
+button {
+    padding: 12px 30px;
+    font-size: 16px;
+    background: #a8edea;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: #98ddd9;
+}

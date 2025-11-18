@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Memory</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Color Memory</h1>
+        <div class="info">Remember the color sequence!</div>
+        <div class="score">Level: <span id="level">1</span> | Score: <span id="score">0</span></div>
+        <div class="game-area" id="gameArea">
+            <div class="color-btn" data-color="red"></div>
+            <div class="color-btn" data-color="blue"></div>
+            <div class="color-btn" data-color="green"></div>
+            <div class="color-btn" data-color="yellow"></div>
+            <div class="color-btn" data-color="purple"></div>
+            <div class="color-btn" data-color="orange"></div>
+        </div>
+        <button id="startBtn">Start Game</button>
+    </div>
+    <script src="../game-storage.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Drop</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Color Drop</h1>
+        <div class="info">Click bins to catch matching colors!</div>
+        <div class="score">Score: <span id="score">0</span> | Misses: <span id="misses">0</span>/5</div>
+        <div class="game-area" id="gameArea">
+            <div id="dropper"></div>
+        </div>
+        <div class="bins">
+            <div class="bin" data-color="red"></div>
+            <div class="bin" data-color="blue"></div>
+            <div class="bin" data-color="green"></div>
+        </div>
+        <button id="startBtn">Start Game</button>
+    </div>
+    <script src="../game-storage.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>

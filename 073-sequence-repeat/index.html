@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sequence Repeat</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Sequence Repeat</h1>
+        <div class="info">Watch and repeat!</div>
+        <div class="score">Level: <span id="level">1</span> | Score: <span id="score">0</span></div>
+        <div class="game-area" id="gameArea">
+            <div class="pad" data-sound="0" style="background:#ff4444"></div>
+            <div class="pad" data-sound="1" style="background:#44ff44"></div>
+            <div class="pad" data-sound="2" style="background:#4444ff"></div>
+            <div class="pad" data-sound="3" style="background:#ffff44"></div>
+        </div>
+        <button id="startBtn">Start Game</button>
+    </div>
+    <script src="../game-storage.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>

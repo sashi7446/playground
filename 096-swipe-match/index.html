@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swipe Match</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Swipe Match</h1>
+        <div class="info">Click arrows matching the shown direction!</div>
+        <div class="score">Score: <span id="score">0</span> | Time: <span id="time">30</span>s</div>
+        <div class="game-area" id="gameArea">
+            <div id="target">➡️</div>
+            <div class="arrows">
+                <button class="arrow-btn" data-dir="up">⬆️</button>
+                <button class="arrow-btn" data-dir="down">⬇️</button>
+                <button class="arrow-btn" data-dir="left">⬅️</button>
+                <button class="arrow-btn" data-dir="right">➡️</button>
+            </div>
+        </div>
+        <button id="startBtn">Start Game</button>
+    </div>
+    <script src="../game-storage.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>

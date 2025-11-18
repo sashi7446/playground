@@ -1,0 +1,83 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+    font-family: Arial, sans-serif;
+}
+
+.game-container {
+    text-align: center;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+h1 {
+    margin: 0 0 10px 0;
+    color: #333;
+}
+
+.info {
+    margin: 10px 0;
+    color: #666;
+}
+
+.score {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #30cfd0;
+}
+
+.game-area {
+    width: 400px;
+    height: 300px;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 5px;
+    margin: 15px 0;
+    padding: 10px;
+    background: #f9f9f9;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+}
+
+.brick {
+    background: #30cfd0;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.brick:hover {
+    transform: scale(1.1);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.brick.hit {
+    animation: blast 0.3s forwards;
+}
+
+@keyframes blast {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(0); opacity: 0; }
+}
+
+button {
+    padding: 12px 30px;
+    font-size: 16px;
+    background: #30cfd0;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: #2ab8b9;
+}

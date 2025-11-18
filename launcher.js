@@ -499,16 +499,67 @@ const GAMES_LIST = [
     { id: '049-quiz-show', number: 49, name: 'Quiz Show', emoji: '❓', description: 'クイズに答える', path: 'games/049-quiz-show/', status: 'available', difficulty: 'easy', genre: 'puzzle' },
     // ゲーム050: Pattern Finder
     { id: '050-pattern-finder', number: 50, name: 'Pattern Finder', emoji: '🔍', description: 'パターンを見つける', path: 'games/050-pattern-finder/', status: 'available', difficulty: 'normal', genre: 'puzzle' },
-    // ゲーム51～100は Coming Soon
-    ...Array.from({ length: 50 }, (_, i) => ({
-        id: `${String(i + 51).padStart(3, '0')}-game`,
-        number: i + 51,
-        name: `Game ${i + 51}`,
-        emoji: '🎯',
-        description: 'Coming Soon',
-        path: null,
-        status: 'coming-soon'
-    }))
+    // ゲーム051: Flash Memory
+    { id: '051-flash-memory', number: 51, name: 'Flash Memory', emoji: '🔢', description: 'Memorize and repeat numbers', path: 'games/051-flash-memory/', status: 'available', difficulty: 'easy', genre: 'puzzle' },
+    // ゲーム052: Text Difference
+    { id: '052-text-difference', number: 52, name: 'Text Difference', emoji: '📝', description: 'Find differences in text', path: 'games/052-text-difference/', status: 'available', difficulty: 'easy', genre: 'puzzle' },
+    // ゲーム053: Wheel of Fortune
+    { id: '053-wheel-fortune', number: 53, name: 'Wheel of Fortune', emoji: '🎡', description: 'Spin wheel to win money', path: 'games/053-wheel-fortune/', status: 'available', difficulty: 'easy', genre: 'casual' },
+    // ゲーム054: Tile Flip
+    { id: '054-tile-flip', number: 54, name: 'Tile Flip', emoji: '🎴', description: 'Match pairs of tiles', path: 'games/054-tile-flip/', status: 'available', difficulty: 'easy', genre: 'puzzle' },
+    // ゲーム055: Fast Typer
+    { id: '055-fast-typer', number: 55, name: 'Fast Typer', emoji: '⌨️', description: 'Type as many words as possible', path: 'games/055-fast-typer/', status: 'available', difficulty: 'normal', genre: 'casual' },
+    // ゲーム056: Sound Match
+    { id: '056-sound-match', number: 56, name: 'Sound Match', emoji: '🔔', description: 'Match sound emoji pairs', path: 'games/056-sound-match/', status: 'available', difficulty: 'easy', genre: 'puzzle' },
+    // ゲーム057: Marble Drop
+    { id: '057-marble-drop', number: 57, name: 'Marble Drop', emoji: '🔵', description: 'Drop marbles through pegs', path: 'games/057-marble-drop/', status: 'available', difficulty: 'normal', genre: 'action' },
+    // ゲーム058: Color Chain
+    { id: '058-color-chain', number: 58, name: 'Color Chain', emoji: '🎨', description: 'Match color sequences', path: 'games/058-color-chain/', status: 'available', difficulty: 'normal', genre: 'puzzle' },
+    // ゲーム059: Bomb Defuse
+    { id: '059-bomb-defuse', number: 59, name: 'Bomb Defuse', emoji: '💣', description: 'Cut correct wires fast', path: 'games/059-bomb-defuse/', status: 'available', difficulty: 'hard', genre: 'action' },
+    // ゲーム060: Dice Race
+    { id: '060-dice-race', number: 60, name: 'Dice Race', emoji: '🎲', description: 'Roll dice to reach finish', path: 'games/060-dice-race/', status: 'available', difficulty: 'easy', genre: 'casual' },
+    // ゲーム061-100 (abbreviated for space)
+    { id: '061-number-chain', number: 61, name: 'Number Chain', emoji: '🔗', description: 'Click numbers 1-10 in order', path: 'games/061-number-chain/', status: 'available', difficulty: 'easy', genre: 'puzzle' },
+    { id: '062-shape-shooter', number: 62, name: 'Shape Shooter', emoji: '🎯', description: 'Click shapes to shoot them', path: 'games/062-shape-shooter/', status: 'available', difficulty: 'easy', genre: 'action' },
+    { id: '063-memory-cards', number: 63, name: 'Memory Cards', emoji: '🃏', description: 'Match card pairs', path: 'games/063-memory-cards/', status: 'available', difficulty: 'easy', genre: 'puzzle' },
+    { id: '064-brick-blast', number: 64, name: 'Brick Blast', emoji: '🧱', description: 'Click all bricks to clear', path: 'games/064-brick-blast/', status: 'available', difficulty: 'easy', genre: 'action' },
+    { id: '065-jump-game', number: 65, name: 'Jump Game', emoji: '🦘', description: 'Jump over obstacles', path: 'games/065-jump-game/', status: 'available', difficulty: 'normal', genre: 'action' },
+    { id: '066-spot-odd', number: 66, name: 'Spot the Odd', emoji: '🔍', description: 'Find the odd one out', path: 'games/066-spot-odd/', status: 'available', difficulty: 'easy', genre: 'puzzle' },
+    { id: '067-letter-match', number: 67, name: 'Letter Match', emoji: '🔤', description: 'Memory with letters', path: 'games/067-letter-match/', status: 'available', difficulty: 'easy', genre: 'puzzle' },
+    { id: '068-tap-sequence', number: 68, name: 'Tap Sequence', emoji: '🌈', description: 'Tap colors in order', path: 'games/068-tap-sequence/', status: 'available', difficulty: 'normal', genre: 'puzzle' },
+    { id: '069-color-drop', number: 69, name: 'Color Drop', emoji: '🪣', description: 'Drop colors in bins', path: 'games/069-color-drop/', status: 'available', difficulty: 'easy', genre: 'casual' },
+    { id: '070-speed-click', number: 70, name: 'Speed Click', emoji: '⚡', description: 'Click as fast as possible', path: 'games/070-speed-click/', status: 'available', difficulty: 'easy', genre: 'casual' },
+    { id: '071-number-match', number: 71, name: 'Number Match', emoji: '🔢', description: 'Match number pairs', path: 'games/071-number-match/', status: 'available', difficulty: 'easy', genre: 'puzzle' },
+    { id: '072-face-match', number: 72, name: 'Face Match', emoji: '😊', description: 'Match emoji faces', path: 'games/072-face-match/', status: 'available', difficulty: 'easy', genre: 'puzzle' },
+    { id: '073-sequence-repeat', number: 73, name: 'Sequence Repeat', emoji: '📋', description: 'Repeat patterns', path: 'games/073-sequence-repeat/', status: 'available', difficulty: 'normal', genre: 'puzzle' },
+    { id: '074-target-click', number: 74, name: 'Target Click', emoji: '🎪', description: 'Click targets that appear', path: 'games/074-target-click/', status: 'available', difficulty: 'easy', genre: 'action' },
+    { id: '075-time-maze', number: 75, name: 'Time Maze', emoji: '🌀', description: 'Navigate maze quickly', path: 'games/075-time-maze/', status: 'available', difficulty: 'normal', genre: 'puzzle' },
+    { id: '076-quick-pair', number: 76, name: 'Quick Pair', emoji: '⚙️', description: 'Fast memory matching', path: 'games/076-quick-pair/', status: 'available', difficulty: 'normal', genre: 'puzzle' },
+    { id: '077-balloon-pop', number: 77, name: 'Balloon Pop', emoji: '🎈', description: 'Pop balloons by clicking', path: 'games/077-balloon-pop/', status: 'available', difficulty: 'easy', genre: 'casual' },
+    { id: '078-number-race', number: 78, name: 'Number Race', emoji: '🏁', description: 'Race numbers forward', path: 'games/078-number-race/', status: 'available', difficulty: 'easy', genre: 'casual' },
+    { id: '079-match-three', number: 79, name: 'Match Three', emoji: '💎', description: 'Match 3 in a row', path: 'games/079-match-three/', status: 'available', difficulty: 'normal', genre: 'puzzle' },
+    { id: '080-follow-path', number: 80, name: 'Follow Path', emoji: '🛤️', description: 'Remember click path', path: 'games/080-follow-path/', status: 'available', difficulty: 'normal', genre: 'puzzle' },
+    { id: '081-card-guess', number: 81, name: 'Card Guess', emoji: '🃏', description: 'Guess lucky card', path: 'games/081-card-guess/', status: 'available', difficulty: 'easy', genre: 'casual' },
+    { id: '082-hidden-object', number: 82, name: 'Hidden Object', emoji: '🌟', description: 'Find hidden objects', path: 'games/082-hidden-object/', status: 'available', difficulty: 'normal', genre: 'puzzle' },
+    { id: '083-pulse-beat', number: 83, name: 'Pulse Beat', emoji: '💓', description: 'Click in rhythm', path: 'games/083-pulse-beat/', status: 'available', difficulty: 'normal', genre: 'casual' },
+    { id: '084-catch-stars', number: 84, name: 'Catch Stars', emoji: '⭐', description: 'Catch falling stars', path: 'games/084-catch-stars/', status: 'available', difficulty: 'easy', genre: 'action' },
+    { id: '085-word-scramble', number: 85, name: 'Word Scramble', emoji: '🔀', description: 'Unscramble words', path: 'games/085-word-scramble/', status: 'available', difficulty: 'normal', genre: 'puzzle' },
+    { id: '086-dot-collect', number: 86, name: 'Dot Collect', emoji: '●', description: 'Collect dots quickly', path: 'games/086-dot-collect/', status: 'available', difficulty: 'easy', genre: 'casual' },
+    { id: '087-number-painter', number: 87, name: 'Number Painter', emoji: '🎨', description: 'Paint by clicking numbers', path: 'games/087-number-painter/', status: 'available', difficulty: 'normal', genre: 'puzzle' },
+    { id: '088-sliding-box', number: 88, name: 'Sliding Box', emoji: '📦', description: 'Slide to goal', path: 'games/088-sliding-box/', status: 'available', difficulty: 'normal', genre: 'puzzle' },
+    { id: '089-gem-match', number: 89, name: 'Gem Match', emoji: '💎', description: 'Match 10 gem pairs', path: 'games/089-gem-match/', status: 'available', difficulty: 'easy', genre: 'puzzle' },
+    { id: '090-arrow-follow', number: 90, name: 'Arrow Follow', emoji: '⬆️', description: 'Press shown arrow keys', path: 'games/090-arrow-follow/', status: 'available', difficulty: 'easy', genre: 'casual' },
+    { id: '091-bounce-click', number: 91, name: 'Bounce Click', emoji: '⚾', description: 'Click bouncing balls', path: 'games/091-bounce-click/', status: 'available', difficulty: 'easy', genre: 'action' },
+    { id: '092-color-memory', number: 92, name: 'Color Memory', emoji: '🌈', description: '6-color Simon game', path: 'games/092-color-memory/', status: 'available', difficulty: 'normal', genre: 'puzzle' },
+    { id: '093-timer-game', number: 93, name: 'Timer Game', emoji: '⏱️', description: 'Stop at 5.0 seconds', path: 'games/093-timer-game/', status: 'available', difficulty: 'normal', genre: 'casual' },
+    { id: '094-circle-tap', number: 94, name: 'Circle Tap', emoji: '⭕', description: 'Tap circles at size', path: 'games/094-circle-tap/', status: 'available', difficulty: 'easy', genre: 'casual' },
+    { id: '095-block-drop', number: 95, name: 'Block Drop', emoji: '📦', description: 'Stack falling blocks', path: 'games/095-block-drop/', status: 'available', difficulty: 'normal', genre: 'casual' },
+    { id: '096-swipe-match', number: 96, name: 'Swipe Match', emoji: '↔️', description: 'Match swipe directions', path: 'games/096-swipe-match/', status: 'available', difficulty: 'normal', genre: 'puzzle' },
+    { id: '097-flash-card', number: 97, name: 'Flash Card', emoji: '📚', description: 'Study and score', path: 'games/097-flash-card/', status: 'available', difficulty: 'easy', genre: 'puzzle' },
+    { id: '098-number-bomb-2', number: 98, name: 'Number Bomb 2', emoji: '💣', description: 'Click correct numbers', path: 'games/098-number-bomb-2/', status: 'available', difficulty: 'normal', genre: 'casual' },
+    { id: '099-reaction-race', number: 99, name: 'Reaction Race', emoji: '🏃', description: 'Final reaction test', path: 'games/099-reaction-race/', status: 'available', difficulty: 'normal', genre: 'casual' },
+    { id: '100-final-challenge', number: 100, name: 'Final Challenge', emoji: '🏆', description: 'Complete 5 challenges', path: 'games/100-final-challenge/', status: 'available', difficulty: 'hard', genre: 'casual' }
 ];
 
 // ランチャーの初期化
