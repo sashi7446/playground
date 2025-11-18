@@ -1,0 +1,93 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.game-container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.timer {
+    font-size: 1.5em;
+    color: #f5576c;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.score {
+    font-size: 1.3em;
+    color: #f093fb;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.tap-btn {
+    width: 150px;
+    height: 150px;
+    font-size: 1.5em;
+    font-weight: bold;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.05s;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    margin: 30px 0;
+}
+
+.tap-btn:active {
+    transform: scale(0.95);
+}
+
+.tap-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.result {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #333;
+    margin-top: 20px;
+    min-height: 35px;
+}
+
+@media (max-width: 600px) {
+    .game-container {
+        padding: 25px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    .tap-btn {
+        width: 120px;
+        height: 120px;
+        font-size: 1.2em;
+    }
+}

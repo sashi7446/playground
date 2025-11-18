@@ -383,11 +383,47 @@ const GAMES_LIST = [
         difficulty: 'easy',
         genre: 'action'
     },
-    // ゲーム33～100は Coming Soon
-    ...Array.from({ length: 68 }, (_, i) => ({
-        id: `${String(i + 33).padStart(3, '0')}-game`,
-        number: i + 33,
-        name: `Game ${i + 33}`,
+    // ゲーム033: Tap Speed
+    {
+        id: '033-tap-speed',
+        number: 33,
+        name: 'Tap Speed',
+        emoji: '⚡',
+        description: '10秒間タップの回数を競う',
+        path: 'games/033-tap-speed/',
+        status: 'available',
+        difficulty: 'easy',
+        genre: 'casual'
+    },
+    // ゲーム034: Number Sequence
+    {
+        id: '034-number-sequence',
+        number: 34,
+        name: 'Number Sequence',
+        emoji: '📊',
+        description: 'パターンを認識して次の数字を当てる',
+        path: 'games/034-number-sequence/',
+        status: 'available',
+        difficulty: 'normal',
+        genre: 'puzzle'
+    },
+    // ゲーム035: Avoid Obstacles
+    {
+        id: '035-avoid-obstacles',
+        number: 35,
+        name: 'Avoid Obstacles',
+        emoji: '🚗',
+        description: '障害物を避けてスコア獲得',
+        path: 'games/035-avoid-obstacles/',
+        status: 'available',
+        difficulty: 'easy',
+        genre: 'action'
+    },
+    // ゲーム36～100は Coming Soon
+    ...Array.from({ length: 65 }, (_, i) => ({
+        id: `${String(i + 36).padStart(3, '0')}-game`,
+        number: i + 36,
+        name: `Game ${i + 36}`,
         emoji: '🎯',
         description: 'Coming Soon',
         path: null,

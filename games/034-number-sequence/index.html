@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>034 - Number Sequence</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Number Sequence</h1>
+        <div class="score">Score: <span id="score">0</span></div>
+
+        <div class="sequence" id="sequence"></div>
+
+        <div class="input-section">
+            <input type="number" id="answerInput" placeholder="Next number?">
+            <button onclick="checkAnswer()">Submit</button>
+        </div>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <script src="../../shared/utils/gameUtils.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
