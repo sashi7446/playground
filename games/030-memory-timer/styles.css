@@ -1,0 +1,123 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.game-container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.score {
+    font-size: 1.3em;
+    color: #4facfe;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.timer-display {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    border-radius: 15px;
+    padding: 40px;
+    margin: 30px 0;
+    color: white;
+}
+
+.number {
+    font-size: 4em;
+    font-weight: bold;
+    margin-bottom: 15px;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.time-left {
+    font-size: 1.2em;
+}
+
+#answerInput {
+    width: 100%;
+    padding: 12px;
+    font-size: 1em;
+    border: 2px solid #4facfe;
+    border-radius: 8px;
+    outline: none;
+    margin: 20px 0;
+}
+
+#answerInput:focus {
+    border-color: #00f2fe;
+    box-shadow: 0 0 5px rgba(79, 172, 254, 0.3);
+}
+
+#answerInput:disabled {
+    background: #f5f5f5;
+    cursor: not-allowed;
+}
+
+.submit-btn {
+    padding: 12px 30px;
+    font-size: 1em;
+    font-weight: bold;
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.submit-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+}
+
+.submit-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.result {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 20px;
+    min-height: 30px;
+    color: #333;
+}
+
+@media (max-width: 600px) {
+    .game-container {
+        padding: 25px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    .number {
+        font-size: 3em;
+    }
+}

@@ -347,11 +347,47 @@ const GAMES_LIST = [
         difficulty: 'easy',
         genre: 'casual'
     },
-    // ゲーム30～100は Coming Soon
-    ...Array.from({ length: 71 }, (_, i) => ({
-        id: `${String(i + 30).padStart(3, '0')}-game`,
-        number: i + 30,
-        name: `Game ${i + 30}`,
+    // ゲーム030: Memory Timer
+    {
+        id: '030-memory-timer',
+        number: 30,
+        name: 'Memory Timer',
+        emoji: '🧩',
+        description: '数字を覚えて入力',
+        path: 'games/030-memory-timer/',
+        status: 'available',
+        difficulty: 'easy',
+        genre: 'puzzle'
+    },
+    // ゲーム031: Color Match
+    {
+        id: '031-color-match',
+        number: 31,
+        name: 'Color Match',
+        emoji: '🎨',
+        description: '色の名前を当てる',
+        path: 'games/031-color-match/',
+        status: 'available',
+        difficulty: 'easy',
+        genre: 'puzzle'
+    },
+    // ゲーム032: Drop Catch
+    {
+        id: '032-drop-catch',
+        number: 32,
+        name: 'Drop Catch',
+        emoji: '🧺',
+        description: '落ちてくるものをキャッチ',
+        path: 'games/032-drop-catch/',
+        status: 'available',
+        difficulty: 'easy',
+        genre: 'action'
+    },
+    // ゲーム33～100は Coming Soon
+    ...Array.from({ length: 68 }, (_, i) => ({
+        id: `${String(i + 33).padStart(3, '0')}-game`,
+        number: i + 33,
+        name: `Game ${i + 33}`,
         emoji: '🎯',
         description: 'Coming Soon',
         path: null,
