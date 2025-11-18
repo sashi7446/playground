@@ -239,11 +239,23 @@ const GAMES_LIST = [
         difficulty: 'easy',
         genre: 'casual'
     },
-    // ゲーム21～100は Coming Soon
-    ...Array.from({ length: 80 }, (_, i) => ({
-        id: `${String(i + 21).padStart(3, '0')}-game`,
-        number: i + 21,
-        name: `Game ${i + 21}`,
+    // ゲーム021: Coin Flip
+    {
+        id: '021-coin-flip',
+        number: 21,
+        name: 'Coin Flip',
+        emoji: '🪙',
+        description: 'コイン投げ - 表か裏か予想',
+        path: 'games/021-coin-flip/',
+        status: 'available',
+        difficulty: 'easy',
+        genre: 'casual'
+    },
+    // ゲーム22～100は Coming Soon
+    ...Array.from({ length: 79 }, (_, i) => ({
+        id: `${String(i + 22).padStart(3, '0')}-game`,
+        number: i + 22,
+        name: `Game ${i + 22}`,
         emoji: '🎯',
         description: 'Coming Soon',
         path: null,

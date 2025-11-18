@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>021 - Coin Flip</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <h1>Coin Flip</h1>
+        </div>
+
+        <div class="game-info">
+            <div class="score-display">
+                <span>Correct: <span id="score">0</span></span>
+            </div>
+        </div>
+
+        <div class="game-board">
+            <div class="coin-display">
+                <div class="coin" id="coin">🪙</div>
+            </div>
+
+            <div class="choices">
+                <button class="choice-btn heads-btn" onclick="guessResult('heads')">
+                    👤 Heads
+                </button>
+                <button class="choice-btn tails-btn" onclick="guessResult('tails')">
+                    🦅 Tails
+                </button>
+            </div>
+
+            <div class="result" id="result"></div>
+        </div>
+    </div>
+
+    <script src="../../shared/utils/gameUtils.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
