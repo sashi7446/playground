@@ -1,0 +1,118 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #f5af19 0%, #f12711 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.game-container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.balance {
+    font-size: 1.3em;
+    color: #f12711;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+.slots {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin: 40px 0;
+    perspective: 1000px;
+}
+
+.slot {
+    font-size: 4em;
+    width: 80px;
+    height: 100px;
+    background: linear-gradient(135deg, #f5af19 0%, #f12711 100%);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+}
+
+.spin-btn {
+    padding: 15px 40px;
+    font-size: 1.1em;
+    font-weight: bold;
+    background: linear-gradient(135deg, #f5af19 0%, #f12711 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    margin: 20px 0;
+}
+
+.spin-btn:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.spin-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.result {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+    margin: 20px 0;
+    min-height: 35px;
+}
+
+.info {
+    font-size: 0.9em;
+    color: #999;
+}
+
+@media (max-width: 600px) {
+    .game-container {
+        padding: 25px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    .slots {
+        gap: 10px;
+        margin: 30px 0;
+    }
+
+    .slot {
+        font-size: 3em;
+        width: 60px;
+        height: 80px;
+    }
+}

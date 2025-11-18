@@ -275,11 +275,47 @@ const GAMES_LIST = [
         difficulty: 'easy',
         genre: 'puzzle'
     },
-    // ゲーム24～100は Coming Soon
-    ...Array.from({ length: 77 }, (_, i) => ({
-        id: `${String(i + 24).padStart(3, '0')}-game`,
-        number: i + 24,
-        name: `Game ${i + 24}`,
+    // ゲーム024: Slot Machine
+    {
+        id: '024-slot-machine',
+        number: 24,
+        name: 'Slot Machine',
+        emoji: '🎰',
+        description: 'スロットマシン - 運試し',
+        path: 'games/024-slot-machine/',
+        status: 'available',
+        difficulty: 'easy',
+        genre: 'casual'
+    },
+    // ゲーム025: Higher or Lower
+    {
+        id: '025-higher-lower',
+        number: 25,
+        name: 'Higher or Lower',
+        emoji: '🃏',
+        description: 'カード - 次の数字を予想',
+        path: 'games/025-higher-lower/',
+        status: 'available',
+        difficulty: 'easy',
+        genre: 'casual'
+    },
+    // ゲーム026: Memory Game
+    {
+        id: '026-memory-game',
+        number: 26,
+        name: 'Memory Game',
+        emoji: '🧠',
+        description: 'ペアを見つけるメモリーゲーム',
+        path: 'games/026-memory-game/',
+        status: 'available',
+        difficulty: 'easy',
+        genre: 'puzzle'
+    },
+    // ゲーム27～100は Coming Soon
+    ...Array.from({ length: 74 }, (_, i) => ({
+        id: `${String(i + 27).padStart(3, '0')}-game`,
+        number: i + 27,
+        name: `Game ${i + 27}`,
         emoji: '🎯',
         description: 'Coming Soon',
         path: null,
