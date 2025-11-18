@@ -311,11 +311,47 @@ const GAMES_LIST = [
         difficulty: 'easy',
         genre: 'puzzle'
     },
-    // ゲーム27～100は Coming Soon
-    ...Array.from({ length: 74 }, (_, i) => ({
-        id: `${String(i + 27).padStart(3, '0')}-game`,
-        number: i + 27,
-        name: `Game ${i + 27}`,
+    // ゲーム027: Spin the Wheel
+    {
+        id: '027-spin-wheel',
+        number: 27,
+        name: 'Spin the Wheel',
+        emoji: '🎡',
+        description: 'ルーレット - 賞品を獲得',
+        path: 'games/027-spin-wheel/',
+        status: 'available',
+        difficulty: 'easy',
+        genre: 'casual'
+    },
+    // ゲーム028: Quiz Game
+    {
+        id: '028-quiz',
+        number: 28,
+        name: 'Quiz Game',
+        emoji: '❓',
+        description: 'クイズに答えてスコア獲得',
+        path: 'games/028-quiz/',
+        status: 'available',
+        difficulty: 'easy',
+        genre: 'puzzle'
+    },
+    // ゲーム029: Clicker Game
+    {
+        id: '029-clicker',
+        number: 29,
+        name: 'Cookie Clicker',
+        emoji: '🍪',
+        description: 'クリッカー - クッキーを集める',
+        path: 'games/029-clicker/',
+        status: 'available',
+        difficulty: 'easy',
+        genre: 'casual'
+    },
+    // ゲーム30～100は Coming Soon
+    ...Array.from({ length: 71 }, (_, i) => ({
+        id: `${String(i + 30).padStart(3, '0')}-game`,
+        number: i + 30,
+        name: `Game ${i + 30}`,
         emoji: '🎯',
         description: 'Coming Soon',
         path: null,

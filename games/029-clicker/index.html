@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>029 - Clicker Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Cookie Clicker</h1>
+        <div class="score">Cookies: <span id="score">0</span></div>
+
+        <button onclick="click()" class="cookie-btn" id="cookieBtn">🍪</button>
+
+        <div class="per-second">Per Second: <span id="perSecond">0</span></div>
+
+        <div class="upgrades">
+            <h3>Upgrades</h3>
+            <button onclick="buyUpgrade(1)" class="upgrade-btn">👷 Worker (Cost: 10) - <span id="w1">0</span></button>
+            <button onclick="buyUpgrade(10)" class="upgrade-btn">🏭 Factory (Cost: 100) - <span id="w10">0</span></button>
+        </div>
+    </div>
+
+    <script src="../../shared/utils/gameUtils.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>

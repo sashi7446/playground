@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>027 - Spin the Wheel</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Spin the Wheel</h1>
+        <div class="prize-display" id="prizeDisplay">Spin to win!</div>
+
+        <div class="wheel-container">
+            <div class="wheel" id="wheel">
+                <div class="slice" style="--i:0; background: #FF6B6B;">50</div>
+                <div class="slice" style="--i:1; background: #FFA500;">100</div>
+                <div class="slice" style="--i:2; background: #4ECDC4;">25</div>
+                <div class="slice" style="--i:3; background: #45B7D1;">75</div>
+                <div class="slice" style="--i:4; background: #96CEB4;">200</div>
+                <div class="slice" style="--i:5; background: #FFEAA7;">150</div>
+            </div>
+            <div class="pointer"></div>
+        </div>
+
+        <button onclick="spin()" id="spinBtn" class="spin-btn">SPIN</button>
+        <div class="total">Total: <span id="total">0</span></div>
+    </div>
+
+    <script src="../../shared/utils/gameUtils.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
