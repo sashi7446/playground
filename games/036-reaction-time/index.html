@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>036 - Reaction Time</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Reaction Time</h1>
+        <div class="stats">
+            <div>Average: <span id="average">-</span>ms</div>
+            <div>Best: <span id="best">-</span>ms</div>
+        </div>
+
+        <div class="game-area" id="gameArea">
+            <div class="reaction-box" id="reactionBox">Ready?</div>
+        </div>
+
+        <div class="info">Click when the box turns green</div>
+        <button id="startBtn" class="start-btn">Start Test</button>
+    </div>
+
+    <script src="../../shared/utils/gameUtils.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>

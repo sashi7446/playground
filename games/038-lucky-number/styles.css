@@ -1,0 +1,133 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.game-container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-around;
+    font-size: 1.2em;
+    color: #fa709a;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.game-area {
+    background: #f5f5f5;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.game-area p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.number-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+}
+
+.number-btn {
+    padding: 15px;
+    font-size: 1.2em;
+    background: white;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.number-btn:hover {
+    background: #fa709a;
+    color: white;
+    border-color: #fa709a;
+    transform: scale(1.1);
+}
+
+.number-btn:disabled {
+    cursor: not-allowed;
+}
+
+.number-btn.revealed {
+    background: #fee140;
+    border-color: #fee140;
+    color: #333;
+}
+
+.number-btn.lucky {
+    background: #4caf50;
+    color: white;
+    border-color: #4caf50;
+    font-size: 1.5em;
+}
+
+.number-btn.unlucky {
+    background: #f44336;
+    color: white;
+    border-color: #f44336;
+}
+
+.result {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #fa709a;
+    margin: 15px 0;
+    min-height: 30px;
+}
+
+.info {
+    color: #666;
+    font-size: 0.9em;
+}
+
+@media (max-width: 600px) {
+    .game-container {
+        padding: 25px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    .number-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+    }
+
+    .number-btn {
+        padding: 12px;
+        font-size: 1em;
+    }
+}

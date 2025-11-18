@@ -419,11 +419,71 @@ const GAMES_LIST = [
         difficulty: 'easy',
         genre: 'action'
     },
-    // ゲーム36～100は Coming Soon
-    ...Array.from({ length: 65 }, (_, i) => ({
-        id: `${String(i + 36).padStart(3, '0')}-game`,
-        number: i + 36,
-        name: `Game ${i + 36}`,
+    // ゲーム036: Reaction Time
+    {
+        id: '036-reaction-time',
+        number: 36,
+        name: 'Reaction Time',
+        emoji: '⚡',
+        description: '反応速度をテスト',
+        path: 'games/036-reaction-time/',
+        status: 'available',
+        difficulty: 'easy',
+        genre: 'casual'
+    },
+    // ゲーム037: Word Flash
+    {
+        id: '037-word-flash',
+        number: 37,
+        name: 'Word Flash',
+        emoji: '💬',
+        description: '表示された単語を当てる',
+        path: 'games/037-word-flash/',
+        status: 'available',
+        difficulty: 'easy',
+        genre: 'puzzle'
+    },
+    // ゲーム038: Lucky Number
+    {
+        id: '038-lucky-number',
+        number: 38,
+        name: 'Lucky Number',
+        emoji: '🍀',
+        description: 'ラッキーナンバーを選ぶ',
+        path: 'games/038-lucky-number/',
+        status: 'available',
+        difficulty: 'easy',
+        genre: 'casual'
+    },
+    // ゲーム039: Bounce Ball
+    {
+        id: '039-bounce-ball',
+        number: 39,
+        name: 'Bounce Ball',
+        emoji: '🎾',
+        description: 'ボールをクリックしてスコア',
+        path: 'games/039-bounce-ball/',
+        status: 'available',
+        difficulty: 'easy',
+        genre: 'action'
+    },
+    // ゲーム040: Minesweeper
+    {
+        id: '040-minesweeper',
+        number: 40,
+        name: 'Minesweeper',
+        emoji: '💣',
+        description: '地雷を避けてセルを開く',
+        path: 'games/040-minesweeper/',
+        status: 'available',
+        difficulty: 'normal',
+        genre: 'puzzle'
+    },
+    // ゲーム41～100は Coming Soon
+    ...Array.from({ length: 60 }, (_, i) => ({
+        id: `${String(i + 41).padStart(3, '0')}-game`,
+        number: i + 41,
+        name: `Game ${i + 41}`,
         emoji: '🎯',
         description: 'Coming Soon',
         path: null,

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>038 - Lucky Number</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Lucky Number</h1>
+        <div class="stats">
+            <div>Wins: <span id="wins">0</span></div>
+            <div>Losses: <span id="losses">0</span></div>
+        </div>
+
+        <div class="game-area">
+            <p>Pick your lucky number (1-10)</p>
+            <div class="number-grid" id="numberGrid"></div>
+        </div>
+
+        <div class="result" id="result"></div>
+        <div class="info">Click to select a number</div>
+    </div>
+
+    <script src="../../shared/utils/gameUtils.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
