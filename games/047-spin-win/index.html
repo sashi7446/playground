@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>047 - Spin to Win</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Spin to Win</h1>
+        <div class="stats">
+            <div>Total: <span id="total">$1000</span></div>
+            <div>Spins: <span id="spins">0</span></div>
+        </div>
+
+        <div class="game-area">
+            <div class="wheel" id="wheel">
+                <div class="wheel-section">100</div>
+                <div class="wheel-section">200</div>
+                <div class="wheel-section">50</div>
+                <div class="wheel-section">500</div>
+                <div class="wheel-section">300</div>
+                <div class="wheel-section">150</div>
+            </div>
+            <div class="pointer">▼</div>
+        </div>
+
+        <button id="spinBtn" class="spin-btn">SPIN</button>
+        <div class="info">Click SPIN to win money!</div>
+    </div>
+
+    <script src="../../shared/utils/gameUtils.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>044 - Simon Says</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Simon Says</h1>
+        <div class="stats">
+            <div>Level: <span id="level">1</span></div>
+            <div>Score: <span id="score">0</span></div>
+        </div>
+
+        <div class="game-area">
+            <div class="color-pad" id="color0" style="background: #ff6b6b;"></div>
+            <div class="color-pad" id="color1" style="background: #4ecdc4;"></div>
+            <div class="color-pad" id="color2" style="background: #ffd93d;"></div>
+            <div class="color-pad" id="color3" style="background: #6bcf7f;"></div>
+        </div>
+
+        <button id="startBtn" class="start-btn">Start Game</button>
+        <div class="info">Follow the color sequence</div>
+    </div>
+
+    <script src="../../shared/utils/gameUtils.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>

@@ -479,11 +479,31 @@ const GAMES_LIST = [
         difficulty: 'normal',
         genre: 'puzzle'
     },
-    // ゲーム41～100は Coming Soon
-    ...Array.from({ length: 60 }, (_, i) => ({
-        id: `${String(i + 41).padStart(3, '0')}-game`,
-        number: i + 41,
-        name: `Game ${i + 41}`,
+    // ゲーム041: Typing Speed
+    { id: '041-typing-speed', number: 41, name: 'Typing Speed', emoji: '⌨️', description: 'タイピング速度テスト', path: 'games/041-typing-speed/', status: 'available', difficulty: 'easy', genre: 'casual' },
+    // ゲーム042: Shape Memory
+    { id: '042-shape-memory', number: 42, name: 'Shape Memory', emoji: '🔷', description: '図形を覚えて再現', path: 'games/042-shape-memory/', status: 'available', difficulty: 'normal', genre: 'puzzle' },
+    // ゲーム043: Gravity Ball
+    { id: '043-gravity-ball', number: 43, name: 'Gravity Ball', emoji: '🎱', description: 'パドルでボールをバウンス', path: 'games/043-gravity-ball/', status: 'available', difficulty: 'easy', genre: 'action' },
+    // ゲーム044: Simon Says
+    { id: '044-simon-says', number: 44, name: 'Simon Says', emoji: '🌈', description: '色の順序をコピー', path: 'games/044-simon-says/', status: 'available', difficulty: 'normal', genre: 'puzzle' },
+    // ゲーム045: Catch Objects
+    { id: '045-catch-objects', number: 45, name: 'Catch Objects', emoji: '🧺', description: 'バスケットで落ちてくるものをキャッチ', path: 'games/045-catch-objects/', status: 'available', difficulty: 'easy', genre: 'action' },
+    // ゲーム046: Speed Math
+    { id: '046-speed-math', number: 46, name: 'Speed Math', emoji: '🧮', description: 'サクサク数学問題を解く', path: 'games/046-speed-math/', status: 'available', difficulty: 'normal', genre: 'puzzle' },
+    // ゲーム047: Spin to Win
+    { id: '047-spin-win', number: 47, name: 'Spin to Win', emoji: '🎡', description: 'ホイールを回して賞品を獲得', path: 'games/047-spin-win/', status: 'available', difficulty: 'easy', genre: 'casual' },
+    // ゲーム048: Number Bomb
+    { id: '048-number-bomb', number: 48, name: 'Number Bomb', emoji: '💣', description: '爆弾の前にタップ', path: 'games/048-number-bomb/', status: 'available', difficulty: 'easy', genre: 'casual' },
+    // ゲーム049: Quiz Show
+    { id: '049-quiz-show', number: 49, name: 'Quiz Show', emoji: '❓', description: 'クイズに答える', path: 'games/049-quiz-show/', status: 'available', difficulty: 'easy', genre: 'puzzle' },
+    // ゲーム050: Pattern Finder
+    { id: '050-pattern-finder', number: 50, name: 'Pattern Finder', emoji: '🔍', description: 'パターンを見つける', path: 'games/050-pattern-finder/', status: 'available', difficulty: 'normal', genre: 'puzzle' },
+    // ゲーム51～100は Coming Soon
+    ...Array.from({ length: 50 }, (_, i) => ({
+        id: `${String(i + 51).padStart(3, '0')}-game`,
+        number: i + 51,
+        name: `Game ${i + 51}`,
         emoji: '🎯',
         description: 'Coming Soon',
         path: null,

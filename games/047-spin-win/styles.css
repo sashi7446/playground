@@ -1,0 +1,19 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: Arial, sans-serif; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
+.game-container { background: rgba(255, 255, 255, 0.95); border-radius: 20px; padding: 40px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3); max-width: 500px; width: 100%; text-align: center; }
+h1 { color: #333; font-size: 2.5em; margin-bottom: 20px; }
+.stats { display: flex; justify-content: space-around; font-size: 1.2em; color: #f5576c; font-weight: bold; margin-bottom: 20px; }
+.game-area { position: relative; margin: 20px 0; display: flex; justify-content: center; align-items: center; }
+.wheel { width: 250px; height: 250px; border-radius: 50%; border: 5px solid #f5576c; position: relative; overflow: hidden; transition: transform 2s ease-out; }
+.wheel-section { position: absolute; width: 50%; height: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2em; color: white; }
+.wheel-section:nth-child(1) { background: #ff6b6b; transform: rotate(0deg) translateY(-50%); }
+.wheel-section:nth-child(2) { background: #4ecdc4; transform: rotate(60deg) translateY(-50%); }
+.wheel-section:nth-child(3) { background: #95e1d3; transform: rotate(120deg) translateY(-50%); }
+.wheel-section:nth-child(4) { background: #ffa07a; transform: rotate(180deg) translateY(-50%); }
+.wheel-section:nth-child(5) { background: #dda0dd; transform: rotate(240deg) translateY(-50%); }
+.wheel-section:nth-child(6) { background: #ffb347; transform: rotate(300deg) translateY(-50%); }
+.pointer { position: absolute; top: -15px; font-size: 2em; color: #f5576c; }
+.spin-btn { padding: 12px 40px; font-size: 1.3em; background: #f5576c; color: white; border: none; border-radius: 50px; cursor: pointer; margin-top: 20px; transition: all 0.3s; }
+.spin-btn:hover { background: #f093fb; transform: scale(1.05); }
+.spin-btn:disabled { background: #ccc; cursor: not-allowed; }
+.info { color: #666; font-size: 0.9em; margin-top: 15px; }

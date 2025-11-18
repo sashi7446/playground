@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>041 - Typing Speed</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Typing Speed</h1>
+        <div class="stats">
+            <div>WPM: <span id="wpm">0</span></div>
+            <div>Time: <span id="timer">30</span>s</div>
+        </div>
+
+        <div class="game-area">
+            <p class="text-to-type" id="textDisplay">Type the text as fast as you can</p>
+            <textarea id="typingInput" placeholder="Click and type here..."></textarea>
+        </div>
+
+        <div class="info">How many words per minute can you type?</div>
+    </div>
+
+    <script src="../../shared/utils/gameUtils.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>

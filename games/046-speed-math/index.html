@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>046 - Speed Math</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Speed Math</h1>
+        <div class="stats">
+            <div>Score: <span id="score">0</span></div>
+            <div>Time: <span id="timer">30</span>s</div>
+        </div>
+
+        <div class="game-area">
+            <div class="problem" id="problem">2 + 3 = ?</div>
+            <input type="number" id="answer" placeholder="Your answer" autofocus>
+            <button id="submitBtn" class="submit-btn">Submit</button>
+        </div>
+
+        <div class="result" id="result"></div>
+        <div class="info">Solve math problems as fast as you can!</div>
+    </div>
+
+    <script src="../../shared/utils/gameUtils.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>

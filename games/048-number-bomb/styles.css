@@ -1,0 +1,11 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: Arial, sans-serif; background: linear-gradient(135deg, #f44336 0%, #ff9800 100%); display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
+.game-container { background: rgba(255, 255, 255, 0.95); border-radius: 20px; padding: 40px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3); max-width: 500px; width: 100%; text-align: center; }
+h1 { color: #333; font-size: 2.5em; margin-bottom: 20px; }
+.stats { display: flex; justify-content: space-around; font-size: 1.2em; color: #f44336; font-weight: bold; margin-bottom: 20px; }
+.game-area { background: #f5f5f5; border-radius: 10px; padding: 30px; margin: 20px 0; }
+.bomb-display { font-size: 4em; font-weight: bold; color: #f44336; margin-bottom: 20px; }
+.tap-btn { padding: 15px 40px; font-size: 1.3em; background: #f44336; color: white; border: none; border-radius: 10px; cursor: pointer; transition: all 0.3s; }
+.tap-btn:hover { background: #ff9800; transform: scale(1.05); }
+.tap-btn:disabled { background: #ccc; cursor: not-allowed; }
+.info { color: #666; font-size: 0.9em; margin-top: 15px; }

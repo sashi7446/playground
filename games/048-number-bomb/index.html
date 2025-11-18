@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>048 - Number Bomb</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Number Bomb</h1>
+        <div class="stats">
+            <div>Score: <span id="score">0</span></div>
+            <div>Timer: <span id="timer">10</span>s</div>
+        </div>
+        <div class="game-area">
+            <div class="bomb-display" id="bombDisplay">9</div>
+            <button id="tapBtn" class="tap-btn">TAP!</button>
+        </div>
+        <div class="info">Tap before the bomb explodes!</div>
+    </div>
+    <script src="../../shared/utils/gameUtils.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
