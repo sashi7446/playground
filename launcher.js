@@ -251,11 +251,35 @@ const GAMES_LIST = [
         difficulty: 'easy',
         genre: 'casual'
     },
-    // ゲーム22～100は Coming Soon
-    ...Array.from({ length: 79 }, (_, i) => ({
-        id: `${String(i + 22).padStart(3, '0')}-game`,
-        number: i + 22,
-        name: `Game ${i + 22}`,
+    // ゲーム022: Dice Rolling
+    {
+        id: '022-dice-rolling',
+        number: 22,
+        name: 'Dice Rolling',
+        emoji: '🎲',
+        description: 'サイコロを振ってスコア獲得',
+        path: 'games/022-dice-rolling/',
+        status: 'available',
+        difficulty: 'easy',
+        genre: 'casual'
+    },
+    // ゲーム023: Number Guessing
+    {
+        id: '023-number-guessing',
+        number: 23,
+        name: 'Number Guessing',
+        emoji: '🔢',
+        description: '1-100の数字を当てる',
+        path: 'games/023-number-guessing/',
+        status: 'available',
+        difficulty: 'easy',
+        genre: 'puzzle'
+    },
+    // ゲーム24～100は Coming Soon
+    ...Array.from({ length: 77 }, (_, i) => ({
+        id: `${String(i + 24).padStart(3, '0')}-game`,
+        number: i + 24,
+        name: `Game ${i + 24}`,
         emoji: '🎯',
         description: 'Coming Soon',
         path: null,
